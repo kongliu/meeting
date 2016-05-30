@@ -7,8 +7,8 @@ class LinksAction extends Action {
 	public function links_list()
 	{		
 		// 友情链接表
-		$ts_friend_links = M('friend_links');
-		$friend_links_list = $ts_friend_links->order('sort_order asc, lid asc')->select();
+		$myweb_friend_links = M('friend_links');
+		$friend_links_list = $myweb_friend_links->order('sort_order asc, lid asc')->select();
 		$this->assign('friend_links_list', $friend_links_list);
 		
 		$this->display();
@@ -29,7 +29,7 @@ class LinksAction extends Action {
 		
 		$lin_info['sort_order'] = intval($_POST['sort_order']);
 		$lin_info['link_add'] = $this->_post('link_add');
-		$lin_info['add_time'] = intval($_POST['add_time']);
+		$lin_info['add_time'] = $_POST['add_time'];
 
 		// 信息检查
 		$lin_error = array();
@@ -43,16 +43,16 @@ class LinksAction extends Action {
 		}
 		
 		// 友情链接表
-		$ts_friend_links = M('friend_links');
+		$myweb_friend_links = M('friend_links');
 		
 		// 友情链接名称不能重复
-		$friend_links_info = $ts_friend_links->where("link_name = '" . $lin_info['link_name'] . "'")->find();
+		$friend_links_info = $myweb_friend_links->where("link_name = '" . $lin_info['link_name'] . "'")->find();
 		if(!empty($friend_links_info) && intval($friend_links_info['lid']) > 0)
 		{
 			$lin_error['lname'] = 2;
 		}
 		// 友情链接地址不能重复
-		$friend_links_info = $ts_friend_links->where("link_add = '" . $lin_info['link_add'] . "'")->find();
+		$friend_links_info = $myweb_friend_links->where("link_add = '" . $lin_info['link_add'] . "'")->find();
 		if(!empty($friend_links_info) && intval($friend_links_info['lid']) > 0)
 		{
 			$lin_error['ladd'] = 2;
@@ -73,7 +73,7 @@ class LinksAction extends Action {
 		// 排列序号纠正
 		if($lin_info['sort_order'] == 0)
 		{
-			$lin_sort_order = $ts_friend_links->field('sort_order')->order('sort_order desc')->limit(0,1)->find();
+			$lin_sort_order = $myweb_friend_links->field('sort_order')->order('sort_order desc')->limit(0,1)->find();
 			if(!empty($lin_sort_order) && intval($lin_sort_order['sort_order']) > 0)
 			{
 				$lin_info['sort_order'] = intval($lin_sort_order['sort_order']) + 1;
@@ -85,7 +85,7 @@ class LinksAction extends Action {
 		}
 
 		// 添加友情链接
-		$lid = $ts_friend_links->add($lin_info);
+		$lid = $myweb_friend_links->add($lin_info);
 
 		// 添加是否成功
 		if($lid > 0)
@@ -113,8 +113,8 @@ class LinksAction extends Action {
 	{
 		// 友情链接表
 		$lid=$_GET['lid'];
-		$ts_friend_links = M('friend_links');
-		$links_info= $ts_friend_links->where('lid ='.$lid)->find();
+		$myweb_friend_links = M('friend_links');
+		$links_info= $myweb_friend_links->where('lid ='.$lid)->find();
 		$this->assign('links_info', $links_info);
 		$this->assign('lid', $lid);
 		
@@ -145,18 +145,18 @@ class LinksAction extends Action {
 		}
 		
 		// 友情链接表
-		$ts_friend_links = M('friend_links');
+		$myweb_friend_links = M('friend_links');
 		
 		// 友情链接名称不能重复
 		
 		
-		$friend_links_info = $ts_friend_links->where("link_name = '" . $lin_info['link_name'] . "' and lid<>".$lid."'")->find();
+		$friend_links_info = $myweb_friend_links->where("link_name = '" . $lin_info['link_name'] . "' and lid<>".$lid)->find();
 		if(!empty($friend_links_info) && intval($friend_links_info['lid']) > 0)
 		{
 			$lin_error['lname'] = 2;
 		}
 		// 友情链接地址不能重复
-		$friend_links_info = $ts_friend_links->where("link_add = '" . $lin_info['link_add'] . "' and lid<>".$lid."'")->find();
+		$friend_links_info = $myweb_friend_links->where("link_add = '" . $lin_info['link_add'] . "' and lid<>".$lid)->find();
 		if(!empty($friend_links_info) && intval($friend_links_info['lid']) > 0)
 		{
 			$lin_error['ladd'] = 2;
@@ -165,19 +165,19 @@ class LinksAction extends Action {
 		// 错误返回
 		if(!empty($lin_error))
 		{
-			$this->assign('lin_info', $lin_info);
+			$this->assign('links_info', $lin_info);
 			$this->assign('lin_error', $lin_error);
 			$this->display('links_info');
 			exit;
 		}
 
 		// 当前时间
-		$lin_info['add_time'] = date('Y-m-d H:i:s');
+		$lin_info['add_time'] = date('Y-m-d H:i:s',time());
 
 		// 排列序号纠正
 		if($lin_info['sort_order'] == 0)
 		{
-			$lin_sort_order = $ts_friend_links->field('sort_order')->order('sort_order desc')->limit(0,1)->find();
+			$lin_sort_order = $myweb_friend_links->field('sort_order')->order('sort_order desc')->limit(0,1)->find();
 			if(!empty($lin_sort_order) && intval($lin_sort_order['sort_order']) > 0)
 			{
 				$lin_info['sort_order'] = intval($lin_sort_order['sort_order']) + 1;
@@ -188,8 +188,8 @@ class LinksAction extends Action {
 			}
 		}
 
-		// 添加栏目
-		$flag = $ts_friend_links->where('lid = ' . $lid)->save($lin_info);
+		// 
+		$flag = $myweb_friend_links->where('lid = ' . $lid)->save($lin_info);
 
 		// 添加是否成功
 		if($flag > 0)
@@ -222,8 +222,8 @@ class LinksAction extends Action {
 	
 
 		// 删除栏目
-		$ts_friend_links = M('friend_links');
-		$flag = $ts_friend_links->where('lid = ' . $lid)->delete();
+		$myweb_friend_links = M('friend_links');
+		$flag = $myweb_friend_links->where('lid = ' . $lid)->delete();
 
 		// 删除是否成功
 		if($flag > 0)

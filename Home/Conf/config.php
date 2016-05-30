@@ -21,12 +21,17 @@ return array(
 	'TMPL_ACTION_SUCCESS'	=> 'Public:success',					// 默认成功跳转对应的模板文件
 	'ERROR_PAGE'			=> '/Public/error.html',				// 错误页面
 
-	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars'	// 用户录入过滤
+	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars',	// 用户录入过滤
+/*
+	'HTML_CACHE_ON'		=> true,						
+	// 开启静态缓存
+	'HTML_FILE_SUFFIX'	=> '.html',						// 缓存文件后缀为.html
+	'HTML_CACHE_TIME'		=> 0,							// 缓存时间为120秒
+	'HTML_CACHE_RULES'	=> array(						// 定义缓存规则
+		'*'=>array('{$_SERVER.REQUEST_URI|md5}', 120),		// 全局缓存120秒
+		'Artical:'=>array('Artical/{:action}_{id}','0','md5') ,
 
-	//'HTML_CACHE_ON'		=> true,						// 开启静态缓存
-	//'HTML_FILE_SUFFIX'	=> '.html',						// 缓存文件后缀为.html
-	//'HTML_CACHE_TIME'		=> 120,							// 缓存时间为120秒
-	//'HTML_CACHE_RULES'	=> array(						// 定义缓存规则
-		//'*'=>array('{$_SERVER.REQUEST_URI|md5}', 120)		// 全局缓存120秒
-	//)
+	)
+	*/
+
 );

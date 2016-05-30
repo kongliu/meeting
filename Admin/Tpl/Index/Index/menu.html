@@ -25,12 +25,12 @@
         <li><div class="node_bg1"></div><div class="node_bg2"></div><a href="__APP__/Siteinfo/Contact/contact_list" target="content">联系信息</a></li>
 	</ul>
     </div>
-    <div class="menu_head"><div class="menu_head_folder">&nbsp;</div><div class="menu_head_title">会员管理</div></div>
-    <div class="menu_table">
-    <ul>
-    	<li><div class="node_bg1"></div><div class="node_bg2"></div><a href="__APP__/User/User/user_list" target="content">会员列表</a></li>
-	</ul>
-    </div>
+   <!--  <div class="menu_head"><div class="menu_head_folder">&nbsp;</div><div class="menu_head_title">会员管理</div></div>
+   <div class="menu_table">
+   <ul>
+       <li><div class="node_bg1"></div><div class="node_bg2"></div><a href="__APP__/User/User/user_list" target="content">会员列表</a></li>
+       </ul>
+   </div> -->
 </div>
 </div>
 </body>

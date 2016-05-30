@@ -4,12 +4,11 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>后台管理系统</title>
 </head>
-<frameset rows="50px,*" border="0" frameborder="0" framespacing="0">
+<frameset rows="20%,*" border="0" frameborder="0" framespacing="0">
 <frame name="head" src="__APP__/Index/Index/head" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" noresize="noresize" />
-<frameset cols="210px,*" border="0" frameborder="0" framespacing="0">
+<frameset cols="20%,*" border="0" frameborder="0" framespacing="0">
 <frame name="menu" src="__APP__/Index/Index/menu" scrolling="no" frameborder="0" marginheight="0" marginwidth="0" noresize="noresize"/>
 <frame name="content" src="__APP__/Index/Index/content" frameborder="0" marginheight="0" marginwidth="0" noresize="noresize" />
 </frameset>
 </frameset>
-<noframes></noframes>
 </html>
