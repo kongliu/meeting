@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>星发布</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/base.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/article.css">
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.min.js"></script>
+</head>
+<body>
+<div class="container">
+<div class="container_left"></div>
+<div class="container_main">
+
+<include file="./Home/Tpl/Public/head.html" />
+
+<div class="main_content">
+<div class="main_content_left">
+	<div class="article_cat">
+	<div class="article_cat_title">
+    	<span class="title_name_cn">{$nav_col_info.cname}</span>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <span class="title_name_en">{$nav_col_info.cname_en}</span>
+	</div>
+    <div class="article_cat_content">
+    	<ul>
+        <volist name="nav_col_list" id="col">
+        <li class="article_cat_item">
+        <if condition="$col.cid eq $nav_current_col_id">
+        <a href="__APP__/Cms/Article/column/cid/{$col.cid}" class="select">{$col.cname}</a>
+        <else />
+        <a href="__APP__/Cms/Article/column/cid/{$col.cid}">{$col.cname}</a>
+        </if>
+        </li>
+        <if condition="$key lt $nav_col_list_len"><li class="article_cat_separate"></li></if>
+        </volist>
+        </ul>
+    </div>
+	</div>
+</div>
+<div class="main_content_right">
+	<div class="nav_bread">
+    	<img src="__PUBLIC__/home/images/nav_bread_bg.png" width="18" height="20" />
+        <span class="current_pos">当前位置：</span>
+        <span><a href="__APP__">首页&nbsp;Home</a></span>
+        <volist name="bread_crumbs" id="col">
+        <if condition="$col.cid eq $current_head_navigation">
+        <span>&gt;</span>
+        <span class="current_cat">{$col.cname}&nbsp;{$col.cname_en}</span>
+        <else />
+        <span>&gt;</span>
+        <span><a href="__APP__/Cms/Article/column/cid/{$col.cid}">{$col.cname}&nbsp;{$col.cname_en}</a></span>
+        </if>
+        </volist>
+    </div>
+    <div class="article_content">
+    	<div class="article_content_title">
+            <div class="title_img_bg"></div>
+            <div class="title_name">
+            <div class="title_name_cn">{$col_info.cname}</div>
+            <div class="title_name_en">{$col_info.cname_en}</div>
+            </div>
+        </div>
+        
+        <if condition="$article_list_len eq 1">
+        <!-- 单篇文章 -->
+        <h2 style="font-size:16px; text-align:center">{$article_info.title}</h2>
+        <div class="article_html">{$article_info.content}</div>
+        <else />
+        <!-- 多篇文章 -->
+        <div class="article_list">
+        	<ul>
+            <volist name="article_list" id="art">
+            <li>
+            <div class="news_name"><a href="__APP__/Cms/Article/article/id/{$art.aid}">{$art.title}</a></div>
+            <div class="news_time">{$art.add_time}</div>
+            </li>
+            </volist>
+            </ul>
+            
+            <div class="page_code">
+            <div class="page_list">
+            	<if condition="$page_code">
+                <span class="total">共&nbsp;{$page_code.record_total}&nbsp;条记录&nbsp;&nbsp;
+                当前&nbsp;{$page_code.page_current}/{$pagecode.page_total}&nbsp;页&nbsp;&nbsp;&nbsp;</span>
+                <a href='__APP__/Cms/Article/column/cid/{$current_head_navigation}/p/1'>首页</a>&nbsp;
+                <a href='__APP__/Cms/Article/column/cid/{$current_head_navigation}/p/{$page_code.page_prev}'>前一页</a>&nbsp;
+                <volist name="page_code.page_num" id="num">
+                <if condition="$page_code.page_current eq $num">
+                <a href='__APP__/Cms/Article/column/cid/{$current_head_navigation}/p/{$num}' class='current'>{$num}</a>&nbsp;
+                <else />
+                <a href='__APP__/Cms/Article/column/cid/{$current_head_navigation}/p/{$num}'>{$num}</a>&nbsp;
+                </if>
+                </volist>
+                <a href='__APP__/Cms/Article/column/cid/{$current_head_navigation}/p/{$page_code.page_next}'>后一页</a>&nbsp;
+                <a href='__APP__/Cms/Article/column/cid/{$current_head_navigation}/p/{$page_code.page_total}'>尾页</a>&nbsp;
+                </if>
+			</div>
+			</div>
+        </div>
+        </if>
+    </div>
+</div>
+<div style="clear:both"></div>
+</div>
+
+<include file="./Home/Tpl/Public/foot.html" />
+
+</div>
+<div class="container_right"></div>
+</div>
+</body>
+</html>

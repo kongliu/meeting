@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/admin/css/base.css" />
+</head>
+<body>
+<div class="content">
+
+<div class="content_title" style="border-bottom:1px solid #b8d0d6;">友情链接</div>
+
+<div class="content_table" style="border:1px solid #b8d0d6; padding:10px;">
+
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<if condition="$friend_links_list"> 
+    	<th height="25" align="left" width="100">编号</th>
+        <th align="left" width="200">友情链接名称</th>
+        <th align="left" >链接地址</th>
+        <th align="center" width="100">排列顺序</th>
+        <th align="left" width="100">添加时间</th>
+        <th align="left" width="100">操作</th>
+	</tr>
+    <volist name="friend_links_list" id="lin">
+    <tr>
+    	<td height="25">{$lin.lid}</td>
+        <td>{$lin.link_name}</td>
+        <td>{$lin.link_add}</td>
+		<td>{$lin.sort_order}</td>
+        <td>{$lin.add_time}</td>
+        <td><a href="__APP__/Siteinfo/Links/edit_link/lid/{$lin.lid}" >编辑</a>&nbsp;&nbsp;
+        <a href="javascript:void(0)" onclick="del_lin({$lin.lid})">删除</a>&nbsp;&nbsp;
+        <a href="__APP__/Siteinfo/Links/add_link" >添加</a></td>
+	</tr>
+    </volist>
+    <else />
+    <tr><td height="25">还没有友情链接，要&nbsp;<a href="__APP__/Siteinfo/Links/add_link" >添加</a>&nbsp;吗？</td></tr>
+    </if>
+    </table>
+    <script type="text/javascript">
+	function del_lin(lid)
+	{
+		if(confirm("确定要删除该链接吗？"))
+		{
+			window.location.href = '__APP__/Siteinfo/Links/del_link/id/' + parseInt(lid);
+		}
+	}
+	</script>
+
+</div>
+
+</div>
+</body>
+</html>

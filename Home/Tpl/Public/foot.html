@@ -1,0 +1,16 @@
+<!-- 尾部 -->
+<div class="foot">
+<div class="foot_up">
+<div class="foot_left"></div>
+<div class="foot_center">
+    <ul>
+    <volist name="bottom_menu" id="menu">
+    <li><a href="__APP__/Cms/Article/column/cid/{$menu.cid}">{$menu.cname}</a></li>
+    <if condition="$key lt $bottom_menu_len"><li>&nbsp;&nbsp;|&nbsp;&nbsp;</li></if>
+    </volist>
+	</ul>
+</div>
+<div class="foot_right"></div>
+</div>
+<div class="foot_down">版权所有&copy;星发布</div>
+</div>

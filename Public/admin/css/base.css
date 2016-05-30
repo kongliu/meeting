@@ -1,0 +1,42 @@
+@charset "utf-8";
+html,body,div,ul,li { margin:0px; padding:0px; list-style:none; font-family:"微软雅黑", "宋体"; }
+input,select,textarea { font-size:12px; }
+body { background-color:#e5edef; }
+.head { height:50px; overflow:hidden; z-index:30; background-position:100% -50px; background:url(../images/header_bg.png) repeat-x; }
+.head_title { float:left; width:50%; line-height:50px; font-size:18px; color:#FFFFFF; }
+.head_menu { float:right; width:50%; height:50px; line-height:50px; font-size:14px; }
+.head_menu ul { float:right; height:50px; }
+.head_menu li { float:left; height:50px; color:#b9ccda; }
+.head_menu li a { text-decoration:none; color:#b9ccda; }
+
+.menu { width:200px; height:510px; padding:5px; font-size:12px; font-family:Arial, sans-serif; color:#183152; }
+.menu .main_menu { height:26px; border:solid 1px #b8d0d6; border-bottom:none; background-color:#e7eff0; }
+.menu .main_menu .menu_title { padding-left:8px; line-height:26px; font-weight:bolder; }
+
+.menu .menu_list { border:solid 1px #b8d0d6; border-bottom:none; border-color:#b8d0d6; }
+.menu .menu_list .menu_head { height:25px; cursor:pointer; background:url(../images/accordion.png) scroll no-repeat; background-position-x:100%; background-position-y:-100px; }
+.menu .menu_list .menu_head_folder { float:left; width:20px; height:25px; overflow:hidden; margin:0px 0px 0px 3px; background:url(../images/accordion.png); 
+background-color:transparent; background-position-x:0px; background-position-y:-150px; }
+.menu .menu_list .menu_head_title { float:left; font-weight:bolder; line-height:25px; }
+
+.menu .menu_list .menu_table { border-color:#b8d0d6; border-style:solid; border-width:0 0 1px 0; background-color:#FFFFFF; }
+.menu .menu_list .menu_table ul {}
+.menu .menu_list .menu_table li { height:22px; line-height:22px; cursor:pointer; overflow:hidden; }
+.menu .menu_list .menu_table li .node_bg1 { display:block; float:left; width:22px; height:22px; background:url(../images/tree.png) scroll no-repeat; 
+background-color:transparent; background-position-x:0px; background-position-y:-450px; }
+.menu .menu_list .menu_table li .node_bg2 { display:block; float:left; width:22px; height:22px; background:url(../images/folder.png) scroll no-repeat;
+background-color:transparent; background-position-x:0px; background-position-y:-100px; }
+.menu .menu_list .menu_table li a { height:22px; text-decoration:none; line-height:24px; color:#183152; }
+
+.content { padding:5px 5px 5px 0px; font-size:12px; font-family:Arial, sans-serif; color:#183152; }
+.content .content_title { height:27px; line-height:27px; padding-left:8px; border:solid 1px #b8d0d6; border-bottom:none; background-color:#e9f0f2; font-weight:bolder; }
+
+.content .form_tab { height:30px; border-bottom:1px solid #b8d0d6; }
+.content .form_tab li { float:left; height:30px; line-height:30px; margin-right:20px; }
+.content .form_tab li a { text-decoration:none; color:#183152; }
+.content .form_tab li a.select { color:#3399FF; }
+.content .form_content { height:auto; min-height:370px; overflow:auto; }
+.content .form_content_item { display:none; padding:10px 0px 0px 10px; }
+.content .form_submit { height:30px; margin-top:10px; }
+
+.content table th { text-align:left; }

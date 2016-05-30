@@ -1,0 +1,37 @@
+<!-- 头部 -->
+<div class="head"><div class="regedit"><a href="#">申请注册</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#">会员登陆</a></div></div>
+
+<div class="nav_menu">
+	<ul>
+    <li>
+    <a href="__APP__" class="select">
+    <div class="menu_item">
+    <div class="menu_left"></div>
+    <div class="menu_content"><div class="menu_cn lan_cn">首&nbsp;页</div><div class="menu_en lan_en">Home</div></div>
+    <div class="menu_right"></div>
+    </div>
+    </a>
+    </li>
+    <volist name="nav_menu" id="menu">
+    <li class="separate"></li>
+    <li>
+    <a href="__APP__/Cms/Article/column/cid/{$menu.cid}">
+    <div class="menu_item">
+    <div class="menu_left"></div>
+    <div class="menu_content"><div class="menu_cn lan_cn">{$menu.cname}</div><div class="menu_en lan_en">{$menu.cname_en}</div></div>
+    <div class="menu_right"></div>
+    </div>
+    </a>
+    	
+        <!-- <if condition="$menu[col_sub_list]">
+        <ul>
+        <volist name="menu[col_sub_list]" id="sub_menu">
+        <li><a href="__APP__/Cms/Article/column/cid/{$sub_menu.cid}">{$sub_menu.cname}&nbsp;&nbsp;{$sub_menu.cname_en}</a></li>
+        </volist>
+        </ul>
+        </if> -->
+      
+    </li>
+    </volist>
+    </ul>
+</div>
