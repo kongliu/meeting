@@ -1,0 +1,283 @@
+[ 2016-05-31T10:19:20+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:20:00+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:20:03+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:21:28+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:21:32+08:00 ] 127.0.0.1 /meeting/admin.php/__app__/index/login.html
+ERR: 无法加载模块:_App__
+
+[ 2016-05-31T10:23:04+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:23:23+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:23:32+08:00 ] 127.0.0.1 /meeting/admin.php/admin/index/login.html
+ERR: 无法加载模块:Admin
+
+[ 2016-05-31T10:23:43+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:24:33+08:00 ] 127.0.0.1 /meeting/admin.php/index/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:24:35+08:00 ] 127.0.0.1 /meeting/admin.php/admin/index/login.html
+ERR: 无法加载模块:Admin
+
+[ 2016-05-31T10:24:44+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/
+ERR: 无法加载模块:Index
+
+[ 2016-05-31T10:25:01+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/
+ERR: 无法加载模块:Index
+
+[ 2016-05-31T10:25:22+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/
+ERR: 无法加载模块:Index
+
+[ 2016-05-31T10:25:24+08:00 ] 127.0.0.1 /meeting/admin.php/__app__/index/login.html
+ERR: 无法加载模块:_App__
+
+[ 2016-05-31T10:25:38+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:25:48+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:26:09+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:26:15+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:26:23+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:29:35+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:29:42+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:32:39+08:00 ] 127.0.0.1 /meeting/admin.php/Index/Index/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T10:53:54+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:53:54+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:54:33+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:54:39+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:55:00+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:55:02+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:55:05+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T10:55:10+08:00 ] 127.0.0.1 /meeting/admin.php/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:04:30+08:00 ] 127.0.0.1 /meeting/admin.php/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:04:31+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:04:37+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:04:54+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:05:32+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:05:38+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:06:03+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:06:04+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:06:05+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:06:07+08:00 ] 127.0.0.1 /meeting/admin.php/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:06:13+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:07:19+08:00 ] 127.0.0.1 /meeting/admin.php/login/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:08:29+08:00 ] 127.0.0.1 /meeting/admin.php/login/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:08:33+08:00 ] 127.0.0.1 /meeting/admin.php/login/login.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:08:47+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:09:36+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:09:41+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:31:37+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T11:40:13+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T12:15:38+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+ERR: 无法加载模块:Login
+
+[ 2016-05-31T12:21:18+08:00 ] 127.0.0.1 /meeting/admin.php/
+ERR: 无法加载模块:Index
+
+[ 2016-05-31T12:21:22+08:00 ] 127.0.0.1 /meeting/admin.php/
+ERR: 无法加载模块:Index
+
+[ 2016-05-31T12:21:43+08:00 ] 127.0.0.1 /meeting/admin.php
+ERR: 无法加载模块:Index
+
+[ 2016-05-31T12:29:37+08:00 ] 127.0.0.1 /meeting/admin.php/login/login/index.html
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T12:59:39+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T13:00:07+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T13:02:46+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T13:02:50+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T13:06:49+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/Column/col_add
+ERR: 无法加载模块:Cms
+
+[ 2016-05-31T13:09:12+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/Column/col_add
+ERR: 无法加载模块:Cms
+
+[ 2016-05-31T13:09:13+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/Column/col_add
+ERR: 无法加载模块:Cms
+
+[ 2016-05-31T13:09:16+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/Column/col_add
+ERR: 无法加载模块:Cms
+
+[ 2016-05-31T13:09:27+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/Column/col_list
+ERR: 无法加载模块:Cms
+
+[ 2016-05-31T13:09:29+08:00 ] 127.0.0.1 /meeting/admin.php/Cms/Article/article_add
+ERR: 无法加载模块:Cms
+
+[ 2016-05-31T13:09:47+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:09:48+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Contact/contact_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:12:36+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:12:36+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Contact/contact_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:12:37+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:12:57+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:12:58+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Contact/contact_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:13:00+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:13:16+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:13:17+08:00 ] 127.0.0.1 /meeting/admin.php/Siteinfo/Links/links_list
+ERR: 无法加载模块:Siteinfo
+
+[ 2016-05-31T13:14:04+08:00 ] 127.0.0.1 /meeting/admin.php/Column/col_insert
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+ERR: 模板不存在[./Admin/Tpl/../Public/message.html]
+
+[ 2016-05-31T13:17:16+08:00 ] 127.0.0.1 /meeting/admin.php/Column/col_insert
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T15:59:25+08:00 ] 127.0.0.1 /meeting/admin.php/Article/article_update
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-05-31T16:00:10+08:00 ] 127.0.0.1 /meeting/admin.php/Article/article_update
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+

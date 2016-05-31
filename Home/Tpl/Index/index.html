@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>星发布官网</title>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/styles.css">
+<script type="text/javascript" src="__PUBLIC__/home/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/home/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+
+<div class="container_main">
+
+<include file="./Home/Tpl/Public/head.html" />
+
+<div class="">
+<div class="row">
+<div class="col-lg-8">
+	
+    
+    <div id="myCarousel" class="carousel slide">
+    <!-- 轮播（Carousel）指标 -->
+    <ol class="carousel-indicators">
+    <foreach name="focus_article" item="focus" key="key">
+    <if condition="($key eq 0) ">
+    <li data-target="#myCarousel" data-slide-to="{$key}" class="active"></li>
+    <else />
+    <li data-target="#myCarousel" data-slide-to="{$key}"></li>
+    </if>   
+    </foreach>
+     </ol>   
+    
+    <!-- 轮播（Carousel）项目 -->
+    <div class="carousel-inner">
+    <foreach name="focus_article" item="focus" key="key">
+    <if condition="($key eq 0) ">  
+        <div class="item active">
+    <else /> 
+    <div class="item ">
+    </if>
+
+            <img src="__PUBLIC__/images/focus/{$focus.focus_img}"  alt="{$focus.title}">
+    </div>
+    </foreach>
+      </div>
+    </div>
+    <!-- 轮播（Carousel）导航 -->
+    <a class="carousel-control left" href="#myCarousel" 
+      data-slide="prev">&lsaquo;</a>
+    <a class="carousel-control right" href="#myCarousel" 
+      data-slide="next">&rsaquo;</a>
+    </div> 
+ 
+
+    
+      
+ <div class="col-lg-4" >
+        <div class="">
+            <span class="">欢迎词</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <span class="">Welcome</span>
+        </div>
+        <div class="">
+        <!--    <img src="__PUBLIC__/home/img/huizhuang.jpg" width="87" height="114" /> -->
+            <div class="">
+            <div class="">{$president_article.title}：</div>
+            &nbsp;&nbsp;&nbsp;&nbsp;{$president_article.summary}
+            <a href="__APP__/Article/article/id/{$president_article.aid}">&gt;&gt;详细</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <div class="row">
+    <div class="col-lg-8">
+    	<div class="row">
+        	
+            <span class="col-lg-3"><h3>新闻公告</h3></span>
+            
+             <span class="col-lg-1 col-lg-push-5"><a href="__APP__/Article/column/cid/{$news_events}" >more&nbsp;&gt;&gt;</a>
+             </span>
+            
+        </div>
+           
+		<div class="row">
+        	<ul>
+            <volist name="news_list" id="news">
+            <li>
+            <span class="col-lg-5 ">
+                <a href="__APP__/Article/article/id/{$news.aid}" >{$news.title}</a>
+            </span>
+            <span class="col-lg-2 col-lg-push-1">{$news.add_time}
+            </span>
+            </li>
+
+            </volist>
+            </ul>
+        </div>
+</div>
+
+<div class="col-lg-4">
+
+    <div class="links">
+    	<div class="links_title">
+        	<span class="title_name_cn">友情链接</span>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		</div>
+        <div class="links_content">
+        	<ul>
+            <volist name="links_list" id="links">
+            <li><img src="__PUBLIC__/home/images/link_item.png" width="14" height="20" border="0" />
+            <a href="{$links.link_add}" target="_ ">{$links.link_name}</a></li>
+            </volist>
+        	</ul>
+        </div>
+    </div>
+    <div class="contact">
+    	<div class="contact_title">
+        	<span class="title_name_cn">联系方式</span>
+		</div>
+        <div class="contact_content">
+        	<div class="contact_left"><img src="__PUBLIC__/home/images/phone.jpg" /></div>
+            <div class="contact_right">
+            <volist name="info_list" id="info"><div><span>{$info.wname}：</span><span class="tel">{$info.wvalue}</span></div></volist>
+            </div>
+		</div>
+    </div>
+</div>
+
+
+
+<include file="./Home/Tpl/Public/foot.html" />
+
+
+</body>
+</html>

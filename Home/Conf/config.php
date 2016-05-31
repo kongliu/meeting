@@ -10,8 +10,6 @@ return array(
 	'DB_PORT'		=> 3306,					// 端口
 	'DB_PREFIX'		=> 'myweb_',					// 表前缀
 
-	'APP_GROUP_LIST'		=> 'Index,Cms,User',					// 模块列表
-	'DEFAULT_GROUP'			=> 'Index',								// 默认模块
 
 	'LOAD_EXT_FILE'			=> "extend,tpcms_common_function",		// 预载入 Common 目录下的 extend.php 和 tpcms_common_function.php
 
