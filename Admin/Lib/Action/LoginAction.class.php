@@ -45,8 +45,7 @@ class LoginAction extends Action {
 		if(!empty($admin_info) && intval($admin_info['id']) > 0)
 		{
 			// $_SESSION['admin_id'] = md5(intval($admin_info['id']) );
-
-			session('admin_id',md5(intval($admin_info['id'])) );  
+			session('admin_id',md5(intval($admin_info['id'])));  
 			$this->redirect('/Index/index/');
 			exit;
 		}
@@ -57,6 +56,18 @@ class LoginAction extends Action {
 			exit;
 		}
 	}
+
+	// 退出
+	public function logout()
+	{
+		if(isset($_SESSION['admin_id']))
+		{
+			// unset($_SESSION['admin_id']);
+			session('[destroy]');
+		}
+		$this->redirect('login/index');
+	}
+
 
 	
 	

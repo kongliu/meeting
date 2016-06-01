@@ -1,15 +1,16 @@
 <?php
 
 // 文章模块
-class ArticleAction extends Action {
+class ArticleAction extends MyBaseAction {
 
-		public function __construct() {
+	public function __construct() {
 		parent::__construct();
        
-		if(!session('?admin_id')){
+	/*	if(!session('?admin_id')){
 			$this->redirect('login/index','',1,'请登录');
-		}
+		}*/
 	}
+
 	// 文章列表
 	public function article_list()
 	{

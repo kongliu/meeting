@@ -22,5 +22,13 @@ return array(
 	'TMPL_ACTION_SUCCESS'	=> 'Public:success',					// 默认成功跳转对应的模板文件
 	'ERROR_PAGE'			=> '/Public/error.html',				// 错误页面
 
-	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars'	// 用户录入过滤
+	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars',	// 用户录入过滤
+	//session设置
+	    'SESSION_OPTIONS'         =>  array(
+        'name'                =>  'MYWEBSESSION',                    //设置session名
+        'expire'              =>  3600,                      //SESSION保存15天
+        'use_trans_sid'       =>  1,                               //跨页传递
+        'use_only_cookies'    =>  0,                               //是否只开启基于cookies的session的会话方式
+    ),
+
 );

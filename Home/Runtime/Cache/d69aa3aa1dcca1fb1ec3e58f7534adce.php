@@ -3,15 +3,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title><?php echo ($col_info["title"]); ?></title>
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/base.css">
-<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/article.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/styles.css">
 <link rel="stylesheet" type="text/css" href="__PUBLIC__/home/css/bootstrap.min.css">
 <script type="text/javascript" src="__PUBLIC__/home/js/jquery.min.js"></script>
 <script type="text/javascript" src="__PUBLIC__/home/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-<div class="container_left"></div>
 <div class="container_main">
 
 <!-- 头部 -->
@@ -41,42 +38,38 @@
 
 
 <div class="main_content">
-<div class="main_content_left">
-	<div class="article_cat">
-	<div class="article_cat_title">
-    	<span class="title_name_cn"><?php echo ($nav_col_info["cname"]); ?></span>
+<div class="col-lg-3">
+    <div class="row">
+        <span class=""><?php echo ($nav_col_info["cname"]); ?></span>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <span class="title_name_en"><?php echo ($nav_col_info["cname_en"]); ?></span>
-	</div>
-    <div class="article_cat_content">
-    	<ul>
-        <?php if(is_array($nav_col_list)): $i = 0; $__LIST__ = $nav_col_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$col): $mod = ($i % 2 );++$i;?><li class="article_cat_item">
-        <?php if($col["cid"] == $current_head_navigation): ?><a href="__APP__/Article/column/cid/<?php echo ($col["cid"]); ?>" class="select"><?php echo ($col["cname"]); ?>&nbsp;&nbsp;&nbsp;<?php echo ($col["cname_en"]); ?></a>
+       
+    </div>
+    <div class="row">
+        <ul>
+        <?php if(is_array($nav_col_list)): $i = 0; $__LIST__ = $nav_col_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$col): $mod = ($i % 2 );++$i;?><li class="">
+        <?php if($col["cid"] == $nav_current_col_id): ?><a href="__APP__/Article/column/cid/<?php echo ($col["cid"]); ?>" class=""><?php echo ($col["cname"]); ?></a>
         <?php else: ?>
-        <a href="__APP__/Article/column/cid/<?php echo ($col["cid"]); ?>"><?php echo ($col["cname"]); ?>&nbsp;&nbsp;&nbsp;<?php echo ($col["cname_en"]); ?></a><?php endif; ?>
-        </li>
-        <?php if($key < $nav_col_list_len): ?><li class="article_cat_separate"></li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+        <a href="__APP__/Article/column/cid/<?php echo ($col["cid"]); ?>"><?php echo ($col["cname"]); ?></a><?php endif; ?>
+        </li><?php endforeach; endif; else: echo "" ;endif; ?>
         </ul>
     </div>
-	</div>
 </div>
-<div class="main_content_right">
-	<div class="nav_bread">
+<div class="col-lg-9">
+	<div class="">
     	<img src="__PUBLIC__/home/images/nav_bread_bg.png" width="18" height="20" />
         <span class="current_pos">当前位置：</span>
-        <span><a href="__APP__">首页&nbsp;Home</a></span>
+        <span><a href="__APP__">首页&nbsp;</a></span>
         <?php if(is_array($bread_crumbs)): $i = 0; $__LIST__ = $bread_crumbs;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$col): $mod = ($i % 2 );++$i; if($col["cid"] == $current_head_navigation): ?><span>&gt;</span>
-        <span class="current_cat"><?php echo ($col["cname"]); ?>&nbsp;<?php echo ($col["cname_en"]); ?></span>
+        <span class="current_cat"><?php echo ($col["cname"]); ?>&nbsp;</span>
         <?php else: ?>
         <span>&gt;</span>
-        <span><a href="__APP__/Article/column/cid/<?php echo ($col["cid"]); ?>"><?php echo ($col["cname"]); ?>&nbsp;<?php echo ($col["cname_en"]); ?></a></span><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+        <span><a href="__APP__/Article/column/cid/<?php echo ($col["cid"]); ?>"><?php echo ($col["cname"]); ?>&nbsp;</a></span><?php endif; endforeach; endif; else: echo "" ;endif; ?>
     </div>
     <div class="article_content">
     	<div class="article_content_title">
             <div class="title_img_bg"></div>
             <div class="title_name">
             <div class="title_name_cn"><?php echo ($col_info["cname"]); ?></div>
-            <div class="title_name_en"><?php echo ($col_info["cname_en"]); ?></div>
             </div>
         </div>
         <div class="article_list">
@@ -103,9 +96,9 @@
         </div>
     </div>
 </div>
-<div style="clear:both"></div>
-</div>
 
+</div>
+</div>
 <!-- 尾部 -->
 <div class="foot">
 <div class="foot_up">
@@ -122,8 +115,5 @@
 </div>
 
 
-</div>
-<div class="container_right"></div>
-</div>
 </body>
 </html>
