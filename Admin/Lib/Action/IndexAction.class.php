@@ -36,7 +36,11 @@ class IndexAction extends MyBaseAction {
 
 	// 右边默认
 	public function content()
-	{
+	{		
+		$web_cms_column=M('cms_column');
+		$col_all_info = $web_cms_column->where("parent_id=0")->select();
+		
+		$this->assign('col_all_info',$col_all_info);
 		$this->display();	
 	}
 

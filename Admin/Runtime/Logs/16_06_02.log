@@ -33,3 +33,27 @@ NOTIC: 建议使用I方法替代_post
 [ 2016-06-02T12:38:50+08:00 ] 127.0.0.1 /meeting/admin.php/index.php
 ERR: 无法加载模块:Index.php
 
+[ 2016-06-02T13:52:57+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T15:18:10+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T15:32:49+08:00 ] 127.0.0.1 /meeting/admin.php/Index/index.html
+ERR: 模板不存在[./Admin/Tpl/Article/list.html]
+
+[ 2016-06-02T15:33:08+08:00 ] 127.0.0.1 /meeting/admin.php/Index/index.html
+ERR: 模板不存在[./Admin/Tpl/Article/article_list.html]
+
+[ 2016-06-02T16:19:39+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+

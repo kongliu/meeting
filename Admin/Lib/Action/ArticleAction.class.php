@@ -67,7 +67,14 @@ class ArticleAction extends MyBaseAction {
 		$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
 		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->order('aid desc')->limit($from,$page_size)->select();
 		$this->assign('article_list', $article_list);
+		/*ob_start();
+
+		
+		$data = ob_get_contents();
+		ob_end_clean();
+		file_put_contents('./1.html',$data);*/
 		$this->display('art_list');
+		
 	}
 
 	// 文章检索
@@ -105,105 +112,110 @@ class ArticleAction extends MyBaseAction {
 			$option=$_POST['option']==''?$_GET['option']:$_POST['option'];
 			
 			$limit_from=($p-1)*10;
+
+			//重写搜索
 			
-			//查询搜索总条数
-			if($cid==0){
-				if($option==0){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' " )->select();
-				}elseif($option==1){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=1" )->select();
-				}elseif($option==2){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=0" )->select();
-				}elseif($option==3){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=1" )->select();
-				}elseif($option==4){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=0" )->select();
-				}elseif($option==5){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=1" )->select();
-				}elseif($option==6){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=0" )->select();
-				}
+
+			if(empty($cid)){
+				if(!empty($title)){
+				$where_title = " title like '%".$title."%' ";
+				// var_dump($where_title);exit;
 			}else{
-				if($option==0){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%'  AND myweb_cms_article.cid=".$cid )->select();
-				}elseif($option==1){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=1 AND myweb_cms_article.cid=".$cid )->select();
-				}elseif($option==2){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=0 AND myweb_cms_article.cid=".$cid )->select();
-				}elseif($option==3){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=1 AND myweb_cms_article.cid=".$cid )->select();
-				}elseif($option==4){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=0 AND myweb_cms_article.cid=".$cid )->select();
-				}elseif($option==5){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=1 AND myweb_cms_article.cid=".$cid)->select();
-				}elseif($option==6){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=0 AND myweb_cms_article.cid=".$cid)->select();
-				}
+				$where_title = '';
 			}
-			// 查询该页的条数
-			$total = count($article_list);
+			switch ($option) {
+				case '0':
+					$where_option = '';
+					break;
+				case '1':
+					$where_option = 'is_pub = 1';
+					break;
+				case '2':
+					$where_option = 'is_pub = 0';
+					break;
+				case '3':
+					$where_option = 'home_show = 1';
+					break;
+				case '4':
+					$where_option = 'home_show = 0';
+					break;
+				case '5':
+					$where_option = 'is_focus = 1 ';
+					break;
+				case '6':
+					$where_option = 'is_focus = 0';
+					break;
+				default:
+					break;
+			}
+			if(empty($where_title)&&empty($where_option)){
+				$where = '';
+			}elseif(empty($where_title)&&!empty($where_option)){
+				$where = $where_option;
+			}elseif (!empty($where_title)&&empty($where_option)) {
+				$where = $where_title;
+			}elseif(!empty($where_title)&&!empty($where_option)){
+				$where = $where_title.' and '.$where_option;
+			}
+			$total = $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time')->where($where)->count();
+			$article_list= $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time')->where($where)->select();
+			}else{
+
+			if(!empty($title)){
+				$where_title = " myweb_cms_article.title like '%".$title."%' ";
+				// var_dump($where_title);exit;
+			}else{
+				$where_title = '';
+			}
+			switch ($option) {
+				case '0':
+					$where_option = '';
+					break;
+				case '1':
+					$where_option = 'myweb_cms_article.is_pub = 1';
+					break;
+				case '2':
+					$where_option = 'myweb_cms_article.is_pub = 0';
+					break;
+				case '3':
+					$where_option = 'myweb_cms_article.home_show = 1';
+					break;
+				case '4':
+					$where_option = 'myweb_cms_article.home_show = 0';
+					break;
+				case '5':
+					$where_option = 'myweb_cms_article.is_focus = 1 ';
+					break;
+				case '6':
+					$where_option = 'myweb_cms_article.is_focus = 0';
+					break;
+				default:
+					break;
+			}
+			if(empty($where_title)&&empty($where_option)){
+				$where = '';
+			}elseif(empty($where_title)&&!empty($where_option)){
+				$where = $where_option;
+			}elseif (!empty($where_title)&&empty($where_option)) {
+				$where = $where_title;
+			}elseif(!empty($where_title)&&!empty($where_option)){
+				$where = $where_title.' and '.$where_option;
+			}
+			if(empty($where)){
+				$where = 'myweb_cms_column.cid =' .$cid;	
+			}else{
+				$where = 'myweb_cms_column.cid =' .$cid .' and '.$where;
+			}
 			
-			if($cid==0){
-				if($option==0){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' " )->limit($limit_from,$page_size)->select();
-				}elseif($option==1){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=1" )->limit($limit_from,$page_size)->select();
-				}elseif($option==2){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=0" )->limit($limit_from,$page_size)->select();
-				}elseif($option==3){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=1" )->limit($limit_from,$page_size)->select();
-				}elseif($option==4){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=0" )->limit($limit_from,$page_size)->select();
-				}elseif($option==5){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=1" )->limit($limit_from,$page_size)->select();
-				}elseif($option==6){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=0" )->limit($limit_from,$page_size)->select();
-				}
-			}else{
-				if($option==0){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%'  AND myweb_cms_article.cid=".$cid )->limit($limit_from,$page_size)->select();
-				}elseif($option==1){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=1 AND myweb_cms_article.cid=".$cid )->limit($limit_from,$page_size)->select();
-				}elseif($option==2){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_pub=0 AND myweb_cms_article.cid=".$cid )->limit($limit_from,$page_size)->select();
-				}elseif($option==3){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=1 AND myweb_cms_article.cid=".$cid )->limit($limit_from,$page_size)->select();
-				}elseif($option==4){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.home_show=0 AND myweb_cms_article.cid=".$cid )->limit($limit_from,$page_size)->select();
-				}elseif($option==5){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=1 AND myweb_cms_article.cid=".$cid)->limit($limit_from,$page_size)->select();
-				}elseif($option==6){
-					$article_list=$myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->where("myweb_cms_article.title like '%".$title."%' AND myweb_cms_article.is_focus=0 AND myweb_cms_article.cid=".$cid)->limit($limit_from,$page_size)->select();
-				}
+
+// var_dump($where);exit;
+				$total = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
+		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->count();
+				$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
+		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->select();
+
 			}
+	
 		
 
 		// 最大页数
