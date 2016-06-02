@@ -20,16 +20,16 @@ return array(
 	'ERROR_PAGE'			=> '/Public/error.html',				// 错误页面
 
 	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars',	// 用户录入过滤
-/*
+
 	'HTML_CACHE_ON'		=> true,						
 	// 开启静态缓存
 	'HTML_FILE_SUFFIX'	=> '.html',						// 缓存文件后缀为.html
 	'HTML_CACHE_TIME'		=> 0,							// 缓存时间为120秒
 	'HTML_CACHE_RULES'	=> array(						// 定义缓存规则
-		'*'=>array('{$_SERVER.REQUEST_URI|md5}', 120),		// 全局缓存120秒
+		'*'=>array('{$_SERVER.REQUEST_URI|md5}', 0),		// 全局缓存120秒
 		'Artical:'=>array('Artical/{:action}_{id}','0','md5') ,
 
 	)
-	*/
+	
 
 );

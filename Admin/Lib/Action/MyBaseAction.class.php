@@ -12,23 +12,18 @@ class MyBaseAction extends Action {
 
 	public function __destruct() {
 		parent::__destruct();
-	//主页缓存文件名
-
-	$pagename = 'index_static.html';
-       if(file_exists(APP_PATH.'/Runtime/Cache/Index/'.$pagename)){
-       		if (unlink(APP_PATH.'/Runtime/Cache/Index/'.$pagename) ){
-       			$data = file_get_contents(__APP__);
-       			$res  = file_put_contents(APP_PATH.'/Runtime/Cache/Index/'.$pagename, $data);
-       		}
-       }else{
-       			$view = new View;
-       			$content = $view->fetch('Index/index');
-       			var_dump($content);exit;
-       			$data = file_get_contents( urlencode ('127.0.0.1/'.__APP__));
-
-       			var_dump($data);exit;
-       			$res  = file_put_contents(APP_PATH.'/Runtime/Cache/Index/'.$pagename, $data);
-       }
+		// var_dump( is_dir(dirname(dirname(dirname(__DIR__))).'/Home/Html') );exit;
+		//执行结束后自动删除缓存
+		if(is_dir(dirname(dirname(dirname(__DIR__))).'/Home/Html')){
+		if ($handle = opendir(dirname(dirname(dirname(__DIR__))).'/Home/Html')) {
+	    while (false !== ($file = readdir($handle))) {
+	        if ($file != "." && $file != "..") {
+	            unlink(dirname(dirname(dirname(__DIR__))).'/Home/Html/'.$file) ;
+	        }
+	    }
+	    closedir($handle);
+		}
+		}
 	
 	}
 

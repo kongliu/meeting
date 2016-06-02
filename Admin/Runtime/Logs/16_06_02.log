@@ -1,0 +1,35 @@
+[ 2016-06-02T10:34:11+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T10:34:21+08:00 ] 127.0.0.1 /meeting/admin.php/Article/article_update
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T11:09:44+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T12:34:32+08:00 ] 127.0.0.1 /meeting/admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T12:35:53+08:00 ] 127.0.0.1 /meeting/admin.php/Article/article_update
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-06-02T12:38:50+08:00 ] 127.0.0.1 /meeting/admin.php/index.php
+ERR: 无法加载模块:Index.php
+

@@ -1,7 +1,7 @@
 <?php
 
 // Kindeditor 模块
-class KindeditorAction extends Action {
+class KindeditorAction extends MyBaseAction {
 
 	// 图片上传
 	public function upload_img()

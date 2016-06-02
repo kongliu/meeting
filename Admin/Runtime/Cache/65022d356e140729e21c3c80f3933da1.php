@@ -10,7 +10,7 @@
 	<div class="head_title">&nbsp;&nbsp;&nbsp;&nbsp;后台管理系统</div>
     <div class="head_menu">
     <ul>
-    <li><a href="/index.php" target="_blank">前台页面</a>&nbsp;|&nbsp;</li>
+    <li><a href="__APP__/../index.php" target="_blank">前台页面</a>&nbsp;|&nbsp;</li>
     <li><a href="javascript:void(0)">修改密码</a>&nbsp;|&nbsp;</li>
     <li><a href="javascript:void(0)">修改资料</a>&nbsp;|&nbsp;</li>
     <li><a href="__APP__/Login/logout/" target="_parent">退出</a>&nbsp;&nbsp;&nbsp;&nbsp;</li>

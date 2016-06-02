@@ -1,7 +1,7 @@
 <?php
 
 // 友情链接模块
-class LinksAction extends Action {
+class LinksAction extends MyBaseAction {
 
 	// 友情链接列表
 	public function links_list()

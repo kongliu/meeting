@@ -1,13 +1,11 @@
 <?php
 
 // 栏目模块
-class ColumnAction extends Action {
-		public function __construct() {
+class ColumnAction extends MyBaseAction {
+	public function __construct() {
 		parent::__construct();
        
-		if(!session('?admin_id')){
-			$this->redirect('login/index','',1,'请登录');
-		}
+		
 	}
 	// 栏目列表
 	public function col_list()

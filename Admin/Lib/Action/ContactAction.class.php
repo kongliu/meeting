@@ -1,7 +1,7 @@
 <?php
 
 // 联系方式模块
-class ContactAction extends Action {
+class ContactAction extends MyBaseAction {
 
 	// 联系方式列表
 	public function contact_list()
