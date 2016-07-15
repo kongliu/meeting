@@ -14,11 +14,12 @@ return array(
 	'LOAD_EXT_FILE'			=> "extend,tpcms_common_function",		// 预载入 Common 目录下的 extend.php 和 tpcms_common_function.php
 
 	'URL_CASE_INSENSITIVE'	=> true,								// URL不区分大小写
+	// 'URL_MODEL'	=> 2,								// URL不区分大小写
 
 	'TMPL_ACTION_ERROR'		=> 'Public:error',						// 默认错误跳转对应的模板文件
 	'TMPL_ACTION_SUCCESS'	=> 'Public:success',					// 默认成功跳转对应的模板文件
 	'ERROR_PAGE'			=> '/Public/error.html',				// 错误页面
-
+/*
 	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars',	// 用户录入过滤
 
 	'HTML_CACHE_ON'		=> true,						
@@ -31,5 +32,5 @@ return array(
 
 	)
 	
-
+*/
 );

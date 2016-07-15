@@ -1,4 +1,4 @@
-<?php
+ <?php
 return array(
 	'DB_TYPE'		=> 'mysql',					// 数据库类型
 	'DB_HOST'		=> 'localhost',				// 服务器地址
@@ -13,6 +13,7 @@ return array(
 
 /*	'APP_GROUP_LIST'		=> 'Index,Cms,User,Siteinfo',			// 模块列表
 	'DEFAULT_GROUP'			=> 'Index',								// 默认模块*/
+	// 'URL_MODEL'=>2,
 
 	'LOAD_EXT_FILE'			=> "extend",							// 预载入 Common 目录下的 extend.php
 

@@ -25,14 +25,14 @@ class LoginAction extends Action {
 	public function login()
 	{
 		// 验证码
-		$verify = $this->_session('verify');
+		/*$verify = $this->_session('verify');
 		$verify_input = $this->_post('verify');
 		if($verify != md5($verify_input))
 		{
 			$this->assign('error', 2);
 			$this->display('index');
 			exit;
-		}
+		}*/
 		
 		// 账户和密码
 		$account = $this->_post('account');

@@ -1,0 +1,28 @@
+[ 2016-07-15T15:14:42+08:00 ] 127.0.0.1 /admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+ERR: 模板不存在[./Admin/Tpl/Login/login.html]
+
+[ 2016-07-15T15:17:18+08:00 ] 127.0.0.1 /admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-07-15T15:18:01+08:00 ] 127.0.0.1 /admin.php/Column/col_insert
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-07-15T17:52:54+08:00 ] 127.0.0.1 /admin.php/Login/login
+NOTIC: 建议使用I方法替代_session
+NOTIC: 建议使用I方法替代_post
+
+[ 2016-07-15T17:55:49+08:00 ] 127.0.0.1 /admin.php/Login/login
+NOTIC: 建议使用I方法替代_post
+NOTIC: 建议使用I方法替代_post
+
