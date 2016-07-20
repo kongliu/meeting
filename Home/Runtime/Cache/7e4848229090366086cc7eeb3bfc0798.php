@@ -42,7 +42,7 @@
 
 <div class="">
 <div class="row">
-<div class="col-lg-8">
+<div class="col-lg-12">
 	
     
     <div id="myCarousel" class="carousel slide">
@@ -73,22 +73,22 @@
 
     
       
- <div class="col-lg-4" >
+<!--  <div class="col-lg-4" >
         <div class="">
             <span class="">欢迎词</span>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <span class="">Welcome</span>
         </div>
-        <div class="">
+        <div class=""> -->
         <!--    <img src="__PUBLIC__/home/img/huizhuang.jpg" width="87" height="114" /> -->
-            <div class="">
+     <!--        <div class="">
             <div class=""><?php echo ($president_article["title"]); ?>：</div>
             &nbsp;&nbsp;&nbsp;&nbsp;<?php echo ($president_article["summary"]); ?>
             <a href="__APP__/Article/article/id/<?php echo ($president_article["aid"]); ?>">&gt;&gt;详细</a>
             </div>
         </div>
     </div>
-    </div>
+    </div> -->
 
     <div class="row">
     <div class="col-lg-8">

@@ -32,12 +32,12 @@ class ColumnAction extends MyBaseAction {
 		// 获取栏目信息
 		$col_info['cname'] = $this->_post('cname');
 		$col_info['cname_en'] = $this->_post('cname_en');
-		$col_info['is_alone_page'] = intval($_POST['is_alone_page']);
-		$col_info['is_nav'] = intval($_POST['is_nav']);
+		// $col_info['is_alone_page'] = intval($_POST['is_alone_page']);
+		// $col_info['is_nav'] = intval($_POST['is_nav']);
 		$col_info['sort_order'] = intval($_POST['sort_order']);
-		$col_info['page_title'] = $this->_post('page_title');
-		$col_info['page_key'] = $this->_post('page_key');
-		$col_info['page_desc'] = $this->_post('page_desc');
+		// $col_info['page_title'] = $this->_post('page_title');
+		// $col_info['page_key'] = $this->_post('page_key');
+		// $col_info['page_desc'] = $this->_post('page_desc');
 		$col_info['is_close'] = intval($_POST['is_close']);
 		$col_info['parent_id'] = intval($_POST['parent_id']);
 
@@ -139,12 +139,12 @@ class ColumnAction extends MyBaseAction {
 		// 获取栏目信息
 		$cid = intval($_POST['cid']);
 		$col_info['cname'] = $this->_post('cname');
-		$col_info['is_alone_page'] = intval($_POST['is_alone_page']);
-		$col_info['is_nav'] = intval($_POST['is_nav']);
+		// $col_info['is_alone_page'] = intval($_POST['is_alone_page']);
+		// $col_info['is_nav'] = intval($_POST['is_nav']);
 		$col_info['sort_order'] = intval($_POST['sort_order']);
-		$col_info['page_title'] = $this->_post('page_title');
-		$col_info['page_key'] = $this->_post('page_key');
-		$col_info['page_desc'] = $this->_post('page_desc');
+		// $col_info['page_title'] = $this->_post('page_title');
+		// $col_info['page_key'] = $this->_post('page_key');
+		// $col_info['page_desc'] = $this->_post('page_desc');
 		$col_info['is_close'] = intval($_POST['is_close']);
 		$col_info['parent_id'] = intval($_POST['parent_id']);
 		$col_info['cname_en'] =$this->_post('cname_en');

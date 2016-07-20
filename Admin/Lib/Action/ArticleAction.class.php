@@ -286,7 +286,8 @@ class ArticleAction extends MyBaseAction {
 		$article_info['content'] = $_POST['content'];
 		$article_info['author'] = $_POST['author'];
 		$article_info['afrom'] = $this->_post('afrom');
-		
+		$article_info['video'] = $this->_post('video');
+
 		$article_info['keyword'] = $this->_post('keyword');
 		$article_info['summary'] = $this->_post('summary');
 		$article_info['is_pub'] = intval($_POST['is_pub']);
@@ -416,6 +417,7 @@ class ArticleAction extends MyBaseAction {
 		$article_info['content'] = $_POST['content'];
 		$article_info['author'] = $_POST['author'];
 		$article_info['afrom'] = $this->_post('afrom');
+		$article_info['video'] = $this->_post('video');
 		
 		$article_info['keyword'] = $this->_post('keyword');
 		$article_info['summary'] = $this->_post('summary');

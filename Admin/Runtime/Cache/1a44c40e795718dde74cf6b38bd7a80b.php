@@ -42,7 +42,7 @@
         </td>
         <td>&nbsp;</td>
 	</tr>
-    <tr>
+<!--     <tr>
     	<td height="25">独立页面：</td>
         <td>
         <?php if($col_info["is_alone_page"] == '1'): ?><input type="radio" name="is_alone_page" value="0" />&nbsp;否
@@ -54,8 +54,8 @@
         <input type="radio" name="is_alone_page" value="1" />&nbsp;是<?php endif; ?>
         </td>
         <td>&nbsp;</td>
-	</tr>
-    <tr>
+	</tr> -->
+ <!--    <tr>
     	<td height="25">是否导航：</td>
         <td>
         <?php if($col_info["is_nav"] == '0'): ?><input type="radio" name="is_nav" value="0" checked="checked" />&nbsp;否
@@ -67,13 +67,13 @@
         <input type="radio" name="is_nav" value="1" checked="checked" />&nbsp;是<?php endif; ?>
         </td>
         <td>&nbsp;</td>
-	</tr>
+	</tr> -->
     <tr>
     	<td height="25">排列序号：</td>
         <td><input type="text" name="sort_order" size="10" maxlength="10" value="<?php echo ($col_info["sort_order"]); ?>" /></td>
         <td>&nbsp;</td>
 	</tr>
-    <tr>
+    <!-- <tr>
     	<td height="25">页面标题：</td>
         <td><input type="text" name="page_title" size="50" maxlength="100" value="<?php echo ($col_info["page_title"]); ?>" /></td>
         <td>&nbsp;</td>
@@ -87,7 +87,7 @@
     	<td height="25">页面描述：</td>
         <td><input type="text" name="page_desc" size="100" maxlength="200" value="<?php echo ($col_info["page_desc"]); ?>" /></td>
         <td>&nbsp;</td>
-	</tr>
+	</tr> -->
     <tr>
     	<td height="25">是否关闭：</td>
         <td>

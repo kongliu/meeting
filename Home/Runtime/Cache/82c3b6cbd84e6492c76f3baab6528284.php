@@ -1,0 +1,158 @@
+<?php if (!defined('THINK_PATH')) exit();?><!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>列表</title>
+	<link rel="stylesheet" href="__PUBLIC__/home/css/bootstrap.min.css">
+	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/home/js/unslider.js"></script>
+	<script src="__PUBLIC__/home/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		.navbar-nav li{
+			margin-right: 15px;
+		}
+		.navbar-nav > li > a{
+			margin-top: 5px;
+			padding-bottom: 10px;
+    		padding-top: 10px;
+		}
+		
+		.icon-bar{
+			background-color: #ccc
+		}
+		.banner { position: relative; overflow: auto; }
+		.banner ul { width: 100%; height: auto; padding: 0}
+    	li { list-style: none; }
+        .banner ul li { float: left; width: 100%}
+        .dots {
+		    position: absolute;
+		    padding: 0;
+		    text-align: center;
+		    left: 0;
+		    right: 0;
+		    bottom: 20px;
+		}
+		.banner .dots li {
+			display: inline-block;
+			width: 10px;
+			height: 10px;
+			margin: 0 4px;
+			text-indent: -999em;
+			border: 2px solid #fff;
+			border-radius: 6px;
+			cursor: pointer;
+			opacity: .4;
+			-webkit-transition: background .5s, opacity .5s;
+			-moz-transition: background .5s, opacity .5s;
+			transition: background .5s, opacity .5s;
+		}
+		.banner .dots li.active {
+			background: #fff;
+			opacity: 1;
+		}
+		.prev{
+			position: absolute; 
+			left: 10px;
+			top:40%
+		}
+		.next{
+			position: absolute; 
+			right: 10px;
+			top:40%
+		}
+	</style>
+</head>
+<body>
+	<nav class="navbar" style="background-color: #000;border-radius:0; margin-bottom: 0" role="navigation">
+	   <div class="navbar-header" style="margin-left: 2%">
+	      <button type="button" class="navbar-toggle" data-toggle="collapse" 
+	         data-target="#example-navbar-collapse">
+	         <span class="sr-only"></span>
+	         <span class="icon-bar"></span>
+	         <span class="icon-bar"></span>
+	         <span class="icon-bar"></span>
+	      </button>
+	      <a class="navbar-brand" style="padding:10px"><img src="__PUBLIC__/home/images/logo.png" width="60"></a>
+	      <a class="navbar-brand" style="padding-top: 18px"><img src="__PUBLIC__/home/images/character.png" width="300"></a>
+	   </div>
+	   <div class="collapse navbar-collapse" id="example-navbar-collapse">
+	      <ul class="nav navbar-nav" style="float: right; padding-top: 15px">
+	         <?php if(is_array($nav_menu)): $key = 0; $__LIST__ = $nav_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($key % 2 );++$key; if(($key == 0) ): ?><li class="active"><a class="btn btn-danger" href="__APP__/Article/column/cid/<?php echo ($menu["cid"]); ?>"><?php echo ($menu["cname"]); ?></a>
+	         </li>
+	         <?php else: ?>
+	         <li><a class="btn btn-danger" href="__APP__/Article/column/cid/<?php echo ($menu["cid"]); ?>"><?php echo ($menu["cname"]); ?></a></li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+	        <!--  <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
+	         <li><a class="btn btn-danger" href="#">下载APP</a></li>
+	         <li><a class="btn btn-danger" href="#">新闻相关</a></li> -->
+	         </volist>
+	      </ul>
+	   </div>
+	</nav>
+
+	<div class="banner" style="min-height: 300px">
+	    <ul>
+	    <?php if(is_array($focus_article)): foreach($focus_article as $key=>$focus): ?><li>
+	        	<a>
+	        		<img src="__PUBLIC__/images/focus/<?php echo ($focus["focus_img"]); ?>" style="width: 100%">
+	        	</a>
+	        </li><?php endforeach; endif; ?>
+	       
+	    </ul>
+	    <a href="javascript:;;" class="unslider-arrow prev"><img src="__PUBLIC__/home/images/left.png" width="30"></a>
+		<a href="javascript:;;" class="unslider-arrow next"><img src="__PUBLIC__/home/images/right.png" width="30"></a>
+	</div>
+
+	<div class="container" style="width: 100%; margin-top: 20px;">
+		<div class="row">
+			<span class="col-xs-1" style="width: 10px;height: 30px; background-color: red; margin-left: 30px"> </span>
+			<span class="col-xs-10" style="font-size: 20px">全部新闻</span>
+		</div>
+
+		<div class="row" style="margin-top: 30px;">
+			<ul class="col-xs-12">
+			<?php if(is_array($news_list)): $i = 0; $__LIST__ = $news_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$news): $mod = ($i % 2 );++$i;?><li class="col-xs-3">
+					<a href="__APP__/Article/article/id/<?php echo ($news["aid"]); ?>">
+					<img src="http://www.bootcss.com/p/unslider/img/sunset.jpg" style="width: 100%; min-height: 150px">
+					</a>
+					<br>
+					<span>新闻标题新闻标题新闻标题新闻标题新闻标题新闻标题</span>
+				</li><?php endforeach; endif; else: echo "" ;endif; ?>	
+			</ul>
+		</div>
+		<div class="row" style="text-align: center;">
+			<ul class="pagination">
+			  <li><a href="#">&laquo;</a></li>
+			  <li><a href="#">1</a></li>
+			  <li><a href="#">2</a></li>
+			  <li><a href="#">3</a></li>
+			  <li><a href="#">4</a></li>
+			  <li><a href="#">5</a></li>
+			  <li><a href="#">&raquo;</a></li>
+			</ul>
+		</div>
+	</div>
+
+	<footer style="background-color: #000; text-align: center; margin-top: 30px">
+		<img src="__PUBLIC__/home/images/xfb_logo.png" width="100" style="margin: 10px 0;"><br>
+		<span style="color: #fff">©2015 星发布（xingfabu.cn）. All Rights Reserved 京ICP备15063222号 </span>
+	</footer>
+
+	<script>
+		$(function() {
+		    var unslider = $('.banner').unslider({
+				speed: 500,             
+				delay: 3000,             
+				complete: function() {}, 
+				keys: true,               
+				dots: true,              
+				fluid: true              
+			});
+		    $('.unslider-arrow').click(function() {
+		        var fn = this.className.split(' ')[1];
+		        unslider.data('unslider')[fn]();
+		    });
+		    $(".banner").width("100%");
+		});
+	</script>
+</body>
+</html>

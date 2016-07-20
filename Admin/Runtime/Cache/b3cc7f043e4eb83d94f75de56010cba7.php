@@ -47,8 +47,8 @@
         <th width="150" align="left">栏目</th>
         <th align="left">标题</th>
         <th width="80" align="left">发布</th>
-        <th width="80" align="left">首页显示</th>
-        <th width="80" align="left">焦点图</th>
+        <th width="80" align="left">首页轮播图</th>
+        <th width="80" align="left">栏目轮播图</th>
         <th width="150" align="left">添加时间</th>
         <th width="100" align="left">操作</th>
 	</tr>

@@ -53,15 +53,76 @@
             </td>
             <td>&nbsp;</td>
 		</tr>
+        <tr>
+            <td>首页轮播图：</td>
+            <td>
+            <if condition="$article_info.home_show eq 1">
+            <input type="radio" name="home_show" value="1" checked="checked" />&nbsp;首页轮播图&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="home_show" value="0"  />&nbsp;非首页轮播图
+            <else />
+            <input type="radio" name="home_show" value="1" />&nbsp;首页轮播图&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="home_show" value="0" checked="checked" />&nbsp;非首页轮播图
+            </if>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        
         <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td>栏目轮播图：</td>
+            <td>
+            <if condition="$article_info.is_focus eq 1">
+            <input type="radio" name="is_focus" value="0" />&nbsp;非栏目轮播图&nbsp;&nbsp;&nbsp;
+            <input type="radio" name="is_focus" value="1" checked="checked" />&nbsp;是栏目轮播图
+            <else />
+            <input type="radio" name="is_focus" value="1" />&nbsp;栏目轮播图
+            &nbsp;&nbsp;&nbsp;
+            
+            <input type="radio" name="is_focus" value="0" checked="checked" />&nbsp;非栏目轮播图
+            </if>
+            </td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>视频地址(URL)：</td>
+            <td><input type="text" name="video" size="100"  style="width:300px;" value="{$article_info.video}" />
+            
+            </td>
+            <td>&nbsp;</td>
+            
+        </tr>
+
+        <if condition="$article_info.is_focus eq 1 and $article_info.focus_img neq ''">
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td>焦点图片：</td>
+            <td><img src="__PUBLIC__/images/focus/{$article_info.focus_img}" width="300" />
+            
+            <td>&nbsp;</td>
+        </tr>
+        </if>
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td>焦点图片：</td>
+            <td><input type="file" name="focus_img" size="30" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr><td colspan="3">&nbsp;</td></tr>
+        <tr>
+            <td>排序：</td>
+            <td><input type="text" name="sort_order" size="10" maxlength="10" value="{$article_info.sort_order}" /></td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr><td colspan="3">&nbsp;</td></tr>
+
         <tr>
         	<td colspan="3"><textarea id="editor_id" name="content">{$article_info.content}</textarea></td>
 			<script type="text/javascript">
 			var htmlEditor = null;
 			var editorOptions = 
 			{
-				width : '643px',										// 编辑器宽度
-				height : '380px',										// 编辑器高度
+				width : '100%',										// 编辑器宽度
+				height : 'auto',										// 编辑器高度
 				minWidth : 643,											// 编辑器最小宽度
 				minHeight : 380,										// 编辑器最小高度
 				filterMode : false,										// 不过滤html标签
@@ -142,53 +203,9 @@
             <td>&nbsp;</td>
         </tr>
         <tr><td colspan="3">&nbsp;</td></tr>
-        <tr>
-        	<td>排序：</td>
-            <td><input type="text" name="sort_order" size="10" maxlength="10" value="{$article_info.sort_order}" /></td>
-            <td>&nbsp;</td>
-        </tr>
+      
         <tr><td colspan="3">&nbsp;</td></tr>
-        <tr>
-        	<td>首页显示：</td>
-            <td>
-            <if condition="$article_info.home_show eq 1">
-            <input type="radio" name="home_show" value="1" checked="checked" />&nbsp;首页显示&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="home_show" value="0"  />&nbsp;首页不显示
-            <else />
-            <input type="radio" name="home_show" value="1" />&nbsp;首页显示&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="home_show" value="0" checked="checked" />&nbsp;首页不显示
-            </if>
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr><td colspan="3">&nbsp;</td></tr>
-        <tr>
-        	<td>焦点图：</td>
-            <td>
-            <if condition="$article_info.is_focus eq 1">
-            <input type="radio" name="is_focus" value="0" />&nbsp;非焦点图&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="is_focus" value="1" checked="checked" />&nbsp;是焦点图
-            <else />
-            <input type="radio" name="is_focus" value="0" checked="checked" />&nbsp;非焦点图&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="is_focus" value="1" />&nbsp;是焦点图
-            </if>
-            </td>
-            <td>&nbsp;</td>
-        </tr>
-        <if condition="$article_info.is_focus eq 1 and $article_info.focus_img neq ''">
-        <tr><td colspan="3">&nbsp;</td></tr>
-        <tr>
-        	<td>焦点图片：</td>
-            <td><img src="__PUBLIC__/images/focus/{$article_info.focus_img}" width="200" /></td>
-            <td>&nbsp;</td>
-		</tr>
-        </if>
-        <tr><td colspan="3">&nbsp;</td></tr>
-        <tr>
-        	<td>焦点图片：</td>
-            <td><input type="file" name="focus_img" size="30" /></td>
-            <td>&nbsp;</td>
-        </tr>
+        
         </table>
         </div>
 	</div>
