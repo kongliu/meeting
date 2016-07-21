@@ -155,6 +155,7 @@ function get_page_code($record_total, $page_size, $page_current)
 	$page_code['page_next'] = $page_next;
 	
 	// 计算数字页码
+	define("PAGE_CODE_LEN",5);
 	if($page_total <= PAGE_CODE_LEN)
 	{
 		for($i=1; $i<=$page_total; $i++) { $page_num[$i] = $i; }

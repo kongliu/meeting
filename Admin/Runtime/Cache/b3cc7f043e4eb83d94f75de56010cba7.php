@@ -28,10 +28,10 @@
         <option value="0" <?php if($option == 0): ?>selected="selected"<?php endif; ?>>其他选项</option>
         <option value="1" <?php if($option == 1): ?>selected="selected"<?php endif; ?>>已发布</option>
         <option value="2" <?php if($option == 2): ?>selected="selected"<?php endif; ?>>未发布</option>
-        <option value="3" <?php if($option == 3): ?>selected="selected"<?php endif; ?>>首页显示</option>
-        <option value="4" <?php if($option == 4): ?>selected="selected"<?php endif; ?>>首页不显示</option>
-        <option value="5" <?php if($option == 5): ?>selected="selected"<?php endif; ?>>是焦点图</option>
-        <option value="6" <?php if($option == 6): ?>selected="selected"<?php endif; ?>>非焦点图</option>
+        <option value="3" <?php if($option == 3): ?>selected="selected"<?php endif; ?>>首页轮播图</option>
+        <option value="4" <?php if($option == 4): ?>selected="selected"<?php endif; ?>>非首页轮播图</option>
+        <option value="5" <?php if($option == 5): ?>selected="selected"<?php endif; ?>>栏目轮播图</option>
+        <option value="6" <?php if($option == 6): ?>selected="selected"<?php endif; ?>>非栏目轮播图</option>
         </select>
         </td>
         <td><input type="submit" value="查询" /></td>
@@ -49,6 +49,7 @@
         <th width="80" align="left">发布</th>
         <th width="80" align="left">首页轮播图</th>
         <th width="80" align="left">栏目轮播图</th>
+        <th width="80" align="left">轮播排序</th>
         <th width="150" align="left">添加时间</th>
         <th width="100" align="left">操作</th>
 	</tr>
@@ -61,6 +62,7 @@
 			<td><?php if($art["is_pub"] == 1): ?>已发布<?php else: ?>未发布<?php endif; ?></td>
 			<td><?php if($art["home_show"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>
 			<td><?php if($art["is_focus"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>
+            <td><?php echo ($art["sort_order"]); ?></td>
 			<td><?php echo ($art["add_time"]); ?></td>
 			<td><a href="__APP__/Article/article_edit/id/<?php echo ($art["aid"]); ?>">编辑</a>&nbsp;&nbsp;
 			<a href="__APP__/Article/article_delete/id/<?php echo ($art["aid"]); ?>" onclick="return confirm('你确定要删除吗');">删除</a>

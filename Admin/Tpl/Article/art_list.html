@@ -30,10 +30,10 @@
         <option value="0" <if condition="$option eq 0">selected="selected"</if>>其他选项</option>
         <option value="1" <if condition="$option eq 1">selected="selected"</if>>已发布</option>
         <option value="2" <if condition="$option eq 2">selected="selected"</if>>未发布</option>
-        <option value="3" <if condition="$option eq 3">selected="selected"</if>>首页显示</option>
-        <option value="4" <if condition="$option eq 4">selected="selected"</if>>首页不显示</option>
-        <option value="5" <if condition="$option eq 5">selected="selected"</if>>是焦点图</option>
-        <option value="6" <if condition="$option eq 6">selected="selected"</if>>非焦点图</option>
+        <option value="3" <if condition="$option eq 3">selected="selected"</if>>首页轮播图</option>
+        <option value="4" <if condition="$option eq 4">selected="selected"</if>>非首页轮播图</option>
+        <option value="5" <if condition="$option eq 5">selected="selected"</if>>栏目轮播图</option>
+        <option value="6" <if condition="$option eq 6">selected="selected"</if>>非栏目轮播图</option>
         </select>
         </td>
         <td><input type="submit" value="查询" /></td>
@@ -51,6 +51,7 @@
         <th width="80" align="left">发布</th>
         <th width="80" align="left">首页轮播图</th>
         <th width="80" align="left">栏目轮播图</th>
+        <th width="80" align="left">轮播排序</th>
         <th width="150" align="left">添加时间</th>
         <th width="100" align="left">操作</th>
 	</tr>
@@ -64,6 +65,7 @@
 			<td><if condition="$art.is_pub eq 1">已发布<else />未发布</if></td>
 			<td><if condition="$art.home_show eq 1">是<else />否</if></td>
 			<td><if condition="$art.is_focus eq 1">是<else />否</if></td>
+            <td>{$art.sort_order}</td>
 			<td>{$art.add_time}</td>
 			<td><a href="__APP__/Article/article_edit/id/{$art.aid}">编辑</a>&nbsp;&nbsp;
 			<a href="__APP__/Article/article_delete/id/{$art.aid}" onclick="return confirm('你确定要删除吗');">删除</a>

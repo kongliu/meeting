@@ -82,7 +82,7 @@
 	         <li class="active"><a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index">{$menu.cname}</a>
 	         </li>
 	         <else />
-	         <li><a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index">{$menu.cname}</a></li> 
+	         <li><a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index/cid/{$menu.cid}">{$menu.cname}</a></li> 
 	        </if>
 			</volist>
 	        <!--  <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
@@ -118,7 +118,7 @@
 			<ul class="col-xs-12">
 			<volist name="article_list" id="article_info">
 				<li class="col-xs-3">
-					<a href="__APP__/Article/article/id/{$news.aid}">
+					<a href="__APP__/News/detail/cid/{$cid}/aid/{$article_info.aid}">
 					<img src="__PUBLIC__/images/focus/{$article_info.focus_img}" style="width: 100%; min-height: 150px">
 					</a>
 					<br>
@@ -130,7 +130,7 @@
 		<div class="row" style="text-align: center;">
 		<if condition="$page_code">
             	<span class="total">共&nbsp;{$page_code.record_total}&nbsp;条记录&nbsp;&nbsp;
-                当前&nbsp;{$page_code.page_current}/{$pagecode.page_total}&nbsp;页&nbsp;&nbsp;&nbsp;</span>
+                当前&nbsp;{$page_code.page_current}/{$page_code.page_total}&nbsp;页&nbsp;&nbsp;&nbsp;</span>
                 <a href='__APP__/News/index/cid/{$cid}/p/1'>首页</a>&nbsp;
                 <a href='__APP__/News/index/cid/{$cid}/p/{$page_code.page_prev}'>前一页</a>&nbsp;
                 <volist name="page_code.page_num" id="num">

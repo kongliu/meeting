@@ -14,9 +14,25 @@
         <?php else: ?>
             <span>操作失败！&nbsp;</span>
             <span><?php echo (urldecode($error_reson)); ?></span><?php endif; ?>
-        <span><a href="<?php echo ($url); ?>">返回</a></span>    
+        <span><a href="<?php echo ($url); ?>">返回</a></span>  
+        <p class="jump">
+页面自动 <a id="href" href="<?php echo($url); $waitSecond=!isset($waitSecond)?3:$waitSecond; ?>">跳转</a> 等待时间： <b id="wait"><?php echo($waitSecond); ?></b>
+</p>  
 	</div>
 </div>
 </div>
+<script type="text/javascript">
+(function(){
+var wait = document.getElementById('wait'),href = document.getElementById('href').href;
+var interval = setInterval(function(){
+	var time = --wait.innerHTML;
+	// alert(time);return;
+	if(time <= 0) {
+		location.href = href;
+		clearInterval(interval);
+	};
+}, 1000);
+})();
+</script>
 </body>
 </html>

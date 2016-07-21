@@ -19,11 +19,15 @@ return array(
 
 	'URL_CASE_INSENSITIVE'	=> true,								// URL不区分大小写
 
-	'TMPL_ACTION_ERROR'		=> 'Public:error',						// 默认错误跳转对应的模板文件
-	'TMPL_ACTION_SUCCESS'	=> 'Public:success',					// 默认成功跳转对应的模板文件
-	'ERROR_PAGE'			=> '/Public/error.html',				// 错误页面
+	'TMPL_ACTION_ERROR'		=> 'Public:error',						
+	// 默认错误跳转对应的模板文件
+	'TMPL_ACTION_SUCCESS'	=> 'Public:success',					
+	// 默认成功跳转对应的模板文件
+	'ERROR_PAGE'			=> '/Public/error.html',				
+	// 错误页面
 
-	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars',	// 用户录入过滤
+	'DEFAULT_FILTER'		=> 'trim,strip_tags,htmlspecialchars',	
+	// 用户录入过滤
 	//session设置
 	    'SESSION_OPTIONS'         =>  array(
         'name'                =>  'MYWEBSESSION',                    //设置session名

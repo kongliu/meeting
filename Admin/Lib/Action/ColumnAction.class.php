@@ -99,6 +99,7 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 1);
 			$url = __APP__ . '/Column/col_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->display('/Public/message');
 			exit;
 		}
@@ -107,6 +108,7 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/Column/col_add';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;
@@ -205,6 +207,7 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 1);
 			$url = __APP__ . '/Column/col_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->display('/Public/message');
 			exit;
 		}
@@ -213,6 +216,7 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/Column/col_edit/id/' . $cid;
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;
@@ -233,8 +237,9 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/Column/col_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			// error_reson = 该栏目下存在文章，不能删除
-			$this->assign('error_reson', '%E8%AF%A5%E6%A0%8F%E7%9B%AE%E4%B8%8B%E5%AD%98%E5%9C%A8%E6%96%87%E7%AB%A0%EF%BC%8C%E4%B8%8D%E8%83%BD%E5%88%A0%E9%99%A4');
+			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;
 		}
@@ -249,6 +254,7 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 1);
 			$url = __APP__ . '/Column/col_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->display('/Public/message');
 			exit;
 		}
@@ -257,6 +263,7 @@ class ColumnAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/Column/col_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;

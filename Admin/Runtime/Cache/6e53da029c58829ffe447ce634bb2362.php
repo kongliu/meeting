@@ -4,8 +4,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link type="text/css" rel="stylesheet" href="__PUBLIC__/admin/css/base.css" />
 <script type="text/javascript" src="__PUBLIC__/admin/js/jquery-1.9.1.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="__PUBLIC__/plugin/kindeditor-4.1.7/kindeditor.js"></script>
-<script type="text/javascript" charset="utf-8" src="__PUBLIC__/plugin/kindeditor-4.1.7/lang/zh_CN.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/plugin/UEeditor/ueditor.config.js"></script>
+<script type="text/javascript" charset="utf-8" src="__PUBLIC__/plugin/UEeditor/ueditor.all.js"></script>
 </head>
 <body>
 <div class="content">
@@ -63,8 +63,8 @@
         <tr>
             <td>栏目轮播图：</td>
             <td>
-            <?php if($article_info["is_focus"] == 1): ?><input type="radio" name="is_focus" value="0" />&nbsp;非栏目轮播图&nbsp;&nbsp;&nbsp;
-            <input type="radio" name="is_focus" value="1" checked="checked" />&nbsp;是栏目轮播图
+            <?php if($article_info["is_focus"] == 1): ?><input type="radio" name="is_focus" value="1" checked="checked" />&nbsp;栏目轮播图
+            <input type="radio" name="is_focus" value="0" />&nbsp;非栏目轮播图&nbsp;&nbsp;&nbsp;
             <?php else: ?>
             <input type="radio" name="is_focus" value="1" />&nbsp;栏目轮播图
             &nbsp;&nbsp;&nbsp;
@@ -73,14 +73,14 @@
             </td>
             <td>&nbsp;</td>
         </tr>
-        <tr>
+        <!-- <tr>
             <td>视频地址(URL)：</td>
             <td><input type="text" name="video" size="100"  style="width:300px;" value="<?php echo ($article_info["video"]); ?>" />
             
             </td>
             <td>&nbsp;</td>
             
-        </tr>
+        </tr> -->
 
         <?php if($article_info["is_focus"] == 1 and $article_info["focus_img"] != ''): ?><tr><td colspan="3">&nbsp;</td></tr>
         <tr>
@@ -92,7 +92,7 @@
         <tr><td colspan="3">&nbsp;</td></tr>
         <tr>
             <td>焦点图片：</td>
-            <td><input type="file" name="focus_img" size="30" /></td>
+            <td><input type="file" name="focus_img" size="30" /><span style="color:#FF0000"><?php if($article_error and $article_error["focus_img"] == 1): ?>图片不能为空<?php else: ?>*<?php endif; ?></span></td>
             <td>&nbsp;</td>
         </tr>
         <tr><td colspan="3">&nbsp;</td></tr>
@@ -103,46 +103,15 @@
         </tr>
         <tr><td colspan="3">&nbsp;</td></tr>
 
-        <tr>
-        	<td colspan="3"><textarea id="editor_id" name="content"><?php echo ($article_info["content"]); ?></textarea></td>
-			<script type="text/javascript">
-			var htmlEditor = null;
-			var editorOptions = 
-			{
-				width : '100%',										// 编辑器宽度
-				height : 'auto',										// 编辑器高度
-				minWidth : 643,											// 编辑器最小宽度
-				minHeight : 380,										// 编辑器最小高度
-				filterMode : false,										// 不过滤html标签
-				basePath : '__PUBLIC__/plugin/kindeditor-4.1.7/',		// 指定根路径
-				resizeType : 0,											// 不能拖动
-				pasteType : 1,											// 纯文本粘贴
-				dialogAlignType : '',									// 弹出框在编辑器中居中
-				useContextmenu : false,									// 屏蔽右键菜单
-				items : [												// 按钮配置
-					'source','preview','|','undo','redo','|','cut','copy','paste','plainpaste','wordpaste','|',
-					'insertorderedlist','insertunorderedlist','|','indent','outdent','|','subscript','superscript','|',
-					'image','multiimage','baidumap','|','selectall','clearhtml','quickformat','/',
-					'formatblock','fontname','fontsize','|','forecolor','hilitecolor','bold','italic','underline','strikethrough',
-					'lineheight','removeformat','|','justifyleft','justifycenter','justifyright','justifyfull','|',
-					'table','hr','anchor','link','unlink'],
-				allowFileUpload : false,								// 屏蔽文件上传按钮
-				allowMediaUpload : false,								// 屏蔽视音频上传按钮
-				allowFlashUpload : false,								// 屏蔽Flash上传按钮
-				allowImageUpload : true,								// 允许图片上传
-				uploadJson : '__APP__/Kindeditor/upload_img',		// 图片上传路径
-				allowFileManager : false,								// 禁用浏览远程服务器按钮
-				fileManagerJson : '',									// 指定浏览远程图片的服务器程序
-				allowImageRemote : false,								// 不显示网络图片标签
-				pagebreakHtml : '<hr style="page-break-after: always;" class="ke-pagebreak" />' // 指定分页符号(默认值)
-			};
-            // 图片上传回调函数
-            KindEditor.options.afterUpload = function(url) { alert(url); }
-            // 编辑器实例化
-            KindEditor.ready(function(K) { htmlEditor = K.create('#editor_id',editorOptions); });
-            </script>
-        </tr>
+        
+        	
+  
+        
         </table>
+        <!-- 编辑器 -->
+            <script id="container" name="content" type="text/plain">
+                <?php echo ($article_info["content"]); ?>
+            </script>
         </div>
         <div class="form_content_item" id="detail" style="display:none">
         <table border="0" cellpadding="0" cellspacing="0">
@@ -208,6 +177,9 @@
 			$("#" + id).show();
 		}
 	</script>
+    <script type="text/javascript">
+        var ue = UE.getEditor('container');
+    </script>
 
 </div>
 </div>

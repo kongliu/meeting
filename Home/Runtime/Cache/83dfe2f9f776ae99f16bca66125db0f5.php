@@ -80,7 +80,7 @@
 	         <?php if(is_array($nav_menu)): $key = 0; $__LIST__ = $nav_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($key % 2 );++$key; if(($key == 0) ): ?><li class="active"><a class="btn btn-danger" href="__APP__/<?php echo ($menu["cname_en"]); ?>/index"><?php echo ($menu["cname"]); ?></a>
 	         </li>
 	         <?php else: ?>
-	         <li><a class="btn btn-danger" href="__APP__/<?php echo ($menu["cname_en"]); ?>/index"><?php echo ($menu["cname"]); ?></a></li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+	         <li><a class="btn btn-danger" href="__APP__/<?php echo ($menu["cname_en"]); ?>/index/cid/<?php echo ($menu["cid"]); ?>"><?php echo ($menu["cname"]); ?></a></li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
 	        <!--  <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
 	         <li><a class="btn btn-danger" href="#">下载APP</a></li>
 	         <li><a class="btn btn-danger" href="#">新闻相关</a></li> -->
@@ -111,7 +111,7 @@
 		<div class="row" style="margin-top: 30px;">
 			<ul class="col-xs-12">
 			<?php if(is_array($article_list)): $i = 0; $__LIST__ = $article_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article_info): $mod = ($i % 2 );++$i;?><li class="col-xs-3">
-					<a href="__APP__/Article/article/id/<?php echo ($news["aid"]); ?>">
+					<a href="__APP__/News/detail/cid/<?php echo ($cid); ?>/aid/<?php echo ($article_info["aid"]); ?>">
 					<img src="__PUBLIC__/images/focus/<?php echo ($article_info["focus_img"]); ?>" style="width: 100%; min-height: 150px">
 					</a>
 					<br>
@@ -121,7 +121,7 @@
 		</div>
 		<div class="row" style="text-align: center;">
 		<?php if($page_code): ?><span class="total">共&nbsp;<?php echo ($page_code["record_total"]); ?>&nbsp;条记录&nbsp;&nbsp;
-                当前&nbsp;<?php echo ($page_code["page_current"]); ?>/<?php echo ($pagecode["page_total"]); ?>&nbsp;页&nbsp;&nbsp;&nbsp;</span>
+                当前&nbsp;<?php echo ($page_code["page_current"]); ?>/<?php echo ($page_code["page_total"]); ?>&nbsp;页&nbsp;&nbsp;&nbsp;</span>
                 <a href='__APP__/News/index/cid/<?php echo ($cid); ?>/p/1'>首页</a>&nbsp;
                 <a href='__APP__/News/index/cid/<?php echo ($cid); ?>/p/<?php echo ($page_code["page_prev"]); ?>'>前一页</a>&nbsp;
                 <?php if(is_array($page_code["page_num"])): $i = 0; $__LIST__ = $page_code["page_num"];if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$num): $mod = ($i % 2 );++$i; if($page_code["page_current"] == $num): ?><a href='__APP__/News/index/cid/<?php echo ($cid); ?>/p/<?php echo ($num); ?>' class='current'><?php echo ($num); ?></a>&nbsp;

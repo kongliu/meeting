@@ -157,8 +157,8 @@ class ArticleAction extends MyBaseAction {
 			}elseif(!empty($where_title)&&!empty($where_option)){
 				$where = $where_title.' and '.$where_option;
 			}
-			$total = $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time')->where($where)->count();
-			$article_list= $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time')->where($where)->select();
+			$total = $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time,sort_order')->where($where)->count();
+			$article_list= $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time,sort_order')->where($where)->limit($limit_from,$page_size)->select();
 			}else{
 
 			if(!empty($title)){
@@ -209,10 +209,10 @@ class ArticleAction extends MyBaseAction {
 			
 
 // var_dump($where);exit;
-				$total = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
+				$total = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_article.sort_order,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
 		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->count();
-				$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->select();
+				$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_article.sort_order,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
+		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->limit($limit_from,$page_size)->select();
 
 			}
 	
@@ -301,6 +301,34 @@ class ArticleAction extends MyBaseAction {
 		}else{
 			$article_info['atime'] = $this->_post('atime');
 		}
+
+		// 排列序号自动纠正
+		if( !empty($article_info['sort_order']) && ($article_info['home_show']||$article_info['is_focus']) )
+		{	
+
+			$article_info['sort_order'] = $this->auto_sort($article_info['sort_order']);
+			
+		}
+
+		// 焦点图上传
+		if(is_uploaded_file($_FILES['focus_img']['tmp_name']))
+		{
+			import('ORG.Net.UploadFile');
+			$upload = new UploadFile();
+			$upload->maxSize = 1024 * 1024 * 1;
+			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');
+			$upload->savePath =  './Public/images/focus/';
+			$upload->saveRule = 'time';
+			if($upload->upload())
+			{
+				$uploadList = $upload->getUploadFileInfo();
+				$article_info['focus_img'] = $uploadList[0]['savename'];
+			}
+		}
+		//图片不能为空
+		if(!$article_info['focus_img']){
+			$article_error['focus_img'] = 1;
+		}
 		// 栏目不能为空
 		// var_dump($article_info);exit;
 		if($article_info['cid'] == 0)
@@ -330,21 +358,7 @@ class ArticleAction extends MyBaseAction {
 			exit;
 		}
 
-		// 焦点图上传
-		if(is_uploaded_file($_FILES['focus_img']['tmp_name']))
-		{
-			import('ORG.Net.UploadFile');
-			$upload = new UploadFile();
-			$upload->maxSize = 1024 * 1024 * 1;
-			$upload->allowExts  = array('jpg', 'gif', 'png', 'jpeg');
-			$upload->savePath =  './Public/images/focus/';
-			$upload->saveRule = 'time';
-			if($upload->upload())
-			{
-				$uploadList = $upload->getUploadFileInfo();
-				$article_info['focus_img'] = $uploadList[0]['savename'];
-			}
-		}
+
 
 		// 添加文章
 		$article_info['admin_id'] = $_SESSION['admin_id'];
@@ -358,6 +372,7 @@ class ArticleAction extends MyBaseAction {
 			$this->assign('success', 1);
 			$url = __APP__ . '/Article/article_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->display('/Public/message');
 			exit;
 		}
@@ -366,6 +381,7 @@ class ArticleAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/Article/article_add';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;
@@ -406,6 +422,25 @@ class ArticleAction extends MyBaseAction {
 		$this->assign('article_info',$article_info);
 		$this->display('art_info');
 	}
+	private function auto_sort($sort){
+
+
+			$web_cms_article = M('cms_article');
+			$res = $web_cms_article->where('sort_order = '.$sort)->find();
+			if(!empty($res))
+			{
+				$sort = $sort + 1;
+				// echo $sort;
+				// exit;
+				return $this->auto_sort($sort);
+				
+			}else{
+				return $sort;
+			}
+			
+		
+
+	}
 	
 	// 文章修改
 	public function article_update()
@@ -425,7 +460,9 @@ class ArticleAction extends MyBaseAction {
 		$article_info['sort_order'] = intval($_POST['sort_order']);
 		$article_info['home_show'] = intval($_POST['home_show']);
 		$article_info['is_focus'] = intval($_POST['is_focus']);
+		if(!empty($_POST['focus_img'])){
 		$article_info['focus_img'] = $_POST['focus_img'];
+		}
 		
 		if($_POST['atime']==''){
 			$article_info['atime']=date('Y-m-d H:i:s');
@@ -459,6 +496,14 @@ class ArticleAction extends MyBaseAction {
 			$this->display('art_info');
 			exit;
 		}
+		// 排列序号自动纠正
+		if( !empty($article_info['sort_order']) && ($article_info['home_show']||$article_info['is_focus']) )
+		{	
+
+			$article_info['sort_order'] = $this->auto_sort($article_info['sort_order']);
+			// var_dump($article_info['sort_order']);exit;
+			
+		}
 
 		// 焦点图上传
 		if(is_uploaded_file($_FILES['focus_img']['tmp_name']))
@@ -485,9 +530,11 @@ class ArticleAction extends MyBaseAction {
 		// 添加是否成功
 		if($article_id > 0)
 		{
+
 			$this->assign('success', 1);
 			$url = __APP__ . '/Article/article_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->display('/Public/message');
 			exit;
 		}
@@ -496,6 +543,7 @@ class ArticleAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/Article/article_edit/id/'.$article_info['aid'];
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;
@@ -515,11 +563,12 @@ class ArticleAction extends MyBaseAction {
 		$flag = $myweb_cms_article->where('aid = ' . $aid)->delete();
 
 		// 删除是否成功
-		if($flag > 0)
+		if($flag)
 		{
 			$this->assign('success', 1);
 			$url = __APP__ . '/Article/article_list';
 			$this->assign('url', $url);
+			// $this->assign('waitSecond', 2);
 			$this->display('/Public/message');
 			exit;
 		}
@@ -528,6 +577,7 @@ class ArticleAction extends MyBaseAction {
 			$this->assign('success', 0);
 			$url = __APP__ . '/article/article_list';
 			$this->assign('url', $url);
+			$this->assign('waitSecond', 2);
 			$this->assign('error_reson', '');
 			$this->display("/Public/message");
 			exit;
