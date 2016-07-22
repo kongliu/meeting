@@ -445,6 +445,8 @@ class ArticleAction extends MyBaseAction {
 	// 文章修改
 	public function article_update()
 	{
+		// echo ini_get('post_max_size');exit;
+		// var_dump($_POST);exit;
 		// 文章信息
 		$article_info['aid'] = intval($_POST['article_aid']);
 		$article_info['cid'] = intval($_POST['cid']);

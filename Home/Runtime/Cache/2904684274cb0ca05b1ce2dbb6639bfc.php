@@ -26,7 +26,6 @@
 		}
 		.details{
 			width: 100%;
-			text-indent:2em;
 		}
 		.details img{
 			display: block;
@@ -90,22 +89,5 @@
 		<span style="color: #fff">©2015 星发布（xingfabu.cn）. All Rights Reserved 京ICP备15063222号 </span>
 	</footer>
 
-	<script>
-		$(function() {
-		    var unslider = $('.banner').unslider({
-				speed: 500,             
-				delay: 3000,             
-				complete: function() {}, 
-				keys: true,               
-				dots: true,              
-				fluid: true              
-			});
-		    $('.unslider-arrow').click(function() {
-		        var fn = this.className.split(' ')[1];
-		        unslider.data('unslider')[fn]();
-		    });
-		    $(".banner").width("100%");
-		});
-	</script>
 </body>
 </html>
