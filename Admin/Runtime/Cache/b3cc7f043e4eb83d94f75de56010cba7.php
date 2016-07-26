@@ -49,7 +49,8 @@
         <th width="80" align="left">发布</th>
         <th width="80" align="left">首页轮播图</th>
         <th width="80" align="left">栏目轮播图</th>
-        <th width="80" align="left">轮播排序</th>
+        <th width="80" align="left">首页轮播排序</th>
+        <th width="80" align="left">列表页轮播排序</th>
         <th width="150" align="left">添加时间</th>
         <th width="100" align="left">操作</th>
 	</tr>
@@ -62,6 +63,7 @@
 			<td><?php if($art["is_pub"] == 1): ?>已发布<?php else: ?>未发布<?php endif; ?></td>
 			<td><?php if($art["home_show"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>
 			<td><?php if($art["is_focus"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>
+            <td><?php echo ($art["sort_order_home"]); ?></td>
             <td><?php echo ($art["sort_order"]); ?></td>
 			<td><?php echo ($art["add_time"]); ?></td>
 			<td><a href="__APP__/Article/article_edit/id/<?php echo ($art["aid"]); ?>">编辑</a>&nbsp;&nbsp;

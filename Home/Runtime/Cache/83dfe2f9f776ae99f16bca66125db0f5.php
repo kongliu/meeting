@@ -30,7 +30,7 @@
 		    text-align: center;
 		    left: 0;
 		    right: 0;
-		    bottom: 20px;
+		    bottom: 10px;
 		}
 		.banner .dots li {
 			display: inline-block;
@@ -72,15 +72,26 @@
 	         <span class="icon-bar"></span>
 	         <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" style="padding:10px"><img src="__PUBLIC__/home/images/logo.png" width="60"></a>
+	      <a class="navbar-brand" style="padding:10px" href="__APP__"><img src="__PUBLIC__/home/images/logo.png" width="60"></a>
 	      <a class="navbar-brand" style="padding-top: 18px"><img src="__PUBLIC__/home/images/character.png" width="300"></a>
 	   </div>
 	   <div class="collapse navbar-collapse" id="example-navbar-collapse">
 	      <ul class="nav navbar-nav" style="float: right; padding-top: 15px">
-	         <?php if(is_array($nav_menu)): $key = 0; $__LIST__ = $nav_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($key % 2 );++$key; if(($key == 0) ): ?><li class="active"><a class="btn btn-danger" href="__APP__/<?php echo ($menu["cname_en"]); ?>/index"><?php echo ($menu["cname"]); ?></a>
-	         </li>
+	      <!-- <?php var_dump($nav_menu) ?> -->
+	         <?php if(is_array($nav_menu)): $key = 0; $__LIST__ = $nav_menu;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$menu): $mod = ($key % 2 );++$key; if(($key == 0) ): ?><li class="active">
+	         
 	         <?php else: ?>
-	         <li><a class="btn btn-danger" href="__APP__/<?php echo ($menu["cname_en"]); ?>/index/cid/<?php echo ($menu["cid"]); ?>"><?php echo ($menu["cname"]); ?></a></li><?php endif; endforeach; endif; else: echo "" ;endif; ?>
+	         <li><?php endif; ?>
+
+	         <?php if(($menu["cname_en"] == app) ): ?><a class="btn btn-danger" href="#" onmouseout="$('#code').hide();" onmouseover="$('#code').show();">下载APP</a>
+				<div id="code" style="position: absolute; left:-24px; display: none;z-index:999" >
+					<img src="__PUBLIC__/home/images/code.png" width="140">
+		        </div>
+			<?php elseif(($menu["cname_en"] == news) ): ?>	
+	         <a class="btn btn-danger" href="__APP__/<?php echo ($menu["cname_en"]); ?>/index/cid/<?php echo ($menu["cid"]); ?>"><?php echo ($menu["cname"]); ?></a>
+	         <?php else: ?>
+	         <a class="btn btn-danger" href="#"><?php echo ($menu["cname"]); ?></a><?php endif; ?>
+	         </li><?php endforeach; endif; else: echo "" ;endif; ?>
 	        <!--  <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
 	         <li><a class="btn btn-danger" href="#">下载APP</a></li>
 	         <li><a class="btn btn-danger" href="#">新闻相关</a></li> -->
@@ -92,8 +103,8 @@
 	<div class="banner" style="min-height: 300px">
 	    <ul>
 	    <?php if(is_array($focus_article)): foreach($focus_article as $key=>$focus): ?><li>
-	        	<a>
-	        		<img src="__PUBLIC__/images/focus/<?php echo ($focus["focus_img"]); ?>" style="width: 100%">
+	        	<a href="__APP__/news/detail/cid/<?php echo ($menu["cid"]); ?>/aid/<?php echo ($focus["aid"]); ?>">
+	        		<img height="300" src="__PUBLIC__/images/focus/<?php echo ($focus["focus_img"]); ?>" style="width: 100%">
 	        	</a>
 	        </li><?php endforeach; endif; ?>
 	       
@@ -109,13 +120,13 @@
 		</div>
 
 		<div class="row" style="margin-top: 30px;">
-			<ul class="col-xs-12">
-			<?php if(is_array($article_list)): $i = 0; $__LIST__ = $article_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article_info): $mod = ($i % 2 );++$i;?><li class="col-xs-3">
+			<ul class="col-xs-12">230018
+			<?php if(is_array($article_list)): $i = 0; $__LIST__ = $article_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$article_info): $mod = ($i % 2 );++$i;?><li class="col-xs-3" style="margin-bottom:15px">
 					<a href="__APP__/News/detail/cid/<?php echo ($cid); ?>/aid/<?php echo ($article_info["aid"]); ?>">
-					<img src="__PUBLIC__/images/focus/<?php echo ($article_info["focus_img"]); ?>" style="width: 100%; min-height: 150px">
+					<img src="__PUBLIC__/images/focus/<?php echo ($article_info["focus_img"]); ?>" style="width: 300px; height: 165px">
 					</a>
 					<br>
-					<span><?php echo ($article_info["title"]); ?></span>
+					<span style="font-size: 16px"><?php echo ($article_info["title"]); ?></span>
 				</li><?php endforeach; endif; else: echo "" ;endif; ?>	
 			</ul>
 		</div>

@@ -3,10 +3,10 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 	<title>首页</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<script src="js/jquery.min.js"></script>
-	<script src="js/unslider.js"></script>
-	<script src="js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="__PUBLIC__/home/css/bootstrap.min.css">
+	<script src="__PUBLIC__/home/js/jquery.min.js"></script>
+	<script src="__PUBLIC__/home/js/unslider.js"></script>
+	<script src="__PUBLIC__/home/js/bootstrap.min.js"></script>
 	<style type="text/css">
 		.navbar-nav li{
 			margin-right: 15px;
@@ -64,7 +64,7 @@
 	</style>
 </head>
 <body>
-	<nav class="navbar" style="position: absolute;width: 100%; z-index:1;border-radius:0; margin-bottom: 0" role="navigation">
+	<nav class="navbar" style="background-color: #000;border-radius:0; margin-bottom: 0" role="navigation">
 	   <div class="navbar-header" style="margin-left: 2%">
 	      <button type="button" class="navbar-toggle" data-toggle="collapse" 
 	         data-target="#example-navbar-collapse">
@@ -73,49 +73,63 @@
 	         <span class="icon-bar"></span>
 	         <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" style="padding:10px"><img src="images/logo.png" width="60"></a>
-	      <a class="navbar-brand" style="padding-top: 18px"><img src="images/character.png" width="300"></a>
+	      <a class="navbar-brand" style="padding:10px" href="__APP__"><img src="__PUBLIC__/home/images/logo.png" width="60"></a>
+	      <a class="navbar-brand" style="padding-top: 18px"><img src="__PUBLIC__/home/images/character.png" width="300"></a>
 	   </div>
 	   <div class="collapse navbar-collapse" id="example-navbar-collapse">
 	      <ul class="nav navbar-nav" style="float: right; padding-top: 15px">
-	         <li class="active"><a class="btn btn-danger" href="#">专业入口</a></li>
-	         <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
-	         <li><a class="btn btn-danger" href="#" onmouseout="$('#code').hide();" onmouseover="$('#code').show();">下载APP</a>
-				<div id="code" style="position: absolute; left:-24px; display: none;" >
-					<img src="images/code.png" width="140">
-		        </div>
+	      <!-- <?php var_dump($nav_menu)  ?> -->
+	         <volist name="nav_menu" id="menu" key="key">
+	         <if condition="($key eq 0) ">
+	         <li class="active">
+	         
+	         <else />
+	         <li>
+	         </if>
 
-	         </li>
-	         <li><a class="btn btn-danger" href="#">新闻相关</a></li>
+	         <if condition="($menu.cname_en eq app) ">
+				<a class="btn btn-danger" href="#" onmouseout="$('#code').hide();" onmouseover="$('#code').show();">下载APP</a>
+				<div id="code" style="position: absolute; left:-24px; display: none;z-index:999" >
+					<img src="__PUBLIC__/home/images/code.png" width="140">
+		        </div>
+			<elseif condition="($menu.cname_en eq news) "/>	
+	         <a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index/cid/{$menu.cid}">{$menu.cname}</a>
+	         <else />
+	         <a class="btn btn-danger" href="javascript:;">{$menu.cname}</a>
+	         </if>
+	         </li> 
+	        
+			</volist>
+	        <!--  <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
+	         <li><a class="btn btn-danger" href="#">下载APP</a></li>
+	         <li><a class="btn btn-danger" href="#">新闻相关</a></li> -->
+	         </volist>
 	      </ul>
 	   </div>
 	</nav>
 
 	<div class="banner" style="min-height: 600px">
 	    <ul>
+	    <div class="row">
+	    <!-- <?php var_dump($focus_article)  ?> -->
+	    </div>
+	     <foreach name="focus_article" item="focus" key="key">
+	       
 	        <li>
-	        	<a>
-	        		<img src="http://www.bootcss.com/p/unslider/img/sunset.jpg" style="width: 100%">
-	        	</a>
+	        	<!-- <a href="__APP__/{$menu.cname_en}/detail/cid/{$focus.cid}/aid/{$focus.aid}">
+ -->	        		<img  src="__PUBLIC__/images/focus/{$focus.focus_img}" style="width: 100%">
+	        	<!-- </a> -->
 	        </li>
-	        <li>
-	        	<a>
-	        		<img src="http://www.bootcss.com/p/unslider/img/sunset.jpg" style="width: 100%">
-	        	</a>
-	        </li>
-	        <li>
-	        	<a>
-	        		<img src="http://www.bootcss.com/p/unslider/img/sunset.jpg" style="width: 100%">
-	        	</a>
-	        </li>
+	    </foreach>
+	       
 	    </ul>
-	    <a href="javascript:;;" class="unslider-arrow prev"><img src="images/left.png" width="50"></a>
-		<a href="javascript:;;" class="unslider-arrow next"><img src="images/right.png" width="50"></a>
+	    <a href="javascript:;;" class="unslider-arrow prev"><img src="__PUBLIC__/home/images/left.png" width="50"></a>
+		<a href="javascript:;;" class="unslider-arrow next"><img src="__PUBLIC__/home/images/right.png" width="50"></a>
 	</div>
 
 	
 	<footer style="background-color: #000; text-align: center;">
-		<img src="images/xfb_logo.png" width="100" style="margin: 10px 0;"><br>
+		<img src="__PUBLIC__/home/images/xfb_logo.png" width="100" style="margin: 10px 0;"><br>
 		<span style="color: #fff">©2015 星发布（xingfabu.cn）. All Rights Reserved 京ICP备15063222号 </span>
 	</footer>
 

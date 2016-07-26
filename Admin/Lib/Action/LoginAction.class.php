@@ -1,11 +1,11 @@
 <?php
 
 // 首页模块
-class LoginAction extends Action {
+class LoginAction extends BaseAction  {
 	public function __construct() {
 		parent::__construct();
        
-	
+
 	}
 
 	// 验证码
@@ -23,7 +23,15 @@ class LoginAction extends Action {
 
 	// 后台登录
 	public function login()
-	{
+	{	
+
+       	$token = @cookie('xfb_token');
+
+		if(!$this->getCacheKey($token)){
+			$this->redirect('login/index','',0,'请登录');
+		}else{
+			$this->redirect('index/index','',0,'');
+		}
 		// 验证码
 		/*$verify = $this->_session('verify');
 		$verify_input = $this->_post('verify');
@@ -45,7 +53,9 @@ class LoginAction extends Action {
 		if(!empty($admin_info) && intval($admin_info['id']) > 0)
 		{
 			// $_SESSION['admin_id'] = md5(intval($admin_info['id']) );
-			session('admin_id',md5(intval($admin_info['id'])));  
+			$token = $admin_info['id'] . sha1($account . rand(100000, 999999));
+			cookie("xfb_token",$token,3600*12);  
+			$this->setCache($token,md5(intval($admin_info['id'])),7200);  
 			$this->redirect('/Index/index/');
 			exit;
 		}
@@ -60,10 +70,12 @@ class LoginAction extends Action {
 	// 退出
 	public function logout()
 	{
-		if(isset($_SESSION['admin_id']))
+		$token = cookie('xfb_token');
+
+		if($this->getCacheKey($token))
 		{
 			// unset($_SESSION['admin_id']);
-			session('[destroy]');
+			$this->delCache($token);
 		}
 		$this->redirect('login/index');
 	}

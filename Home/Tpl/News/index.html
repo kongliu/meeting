@@ -30,7 +30,7 @@
 		    text-align: center;
 		    left: 0;
 		    right: 0;
-		    bottom: 20px;
+		    bottom: 10px;
 		}
 		.banner .dots li {
 			display: inline-block;
@@ -72,18 +72,32 @@
 	         <span class="icon-bar"></span>
 	         <span class="icon-bar"></span>
 	      </button>
-	      <a class="navbar-brand" style="padding:10px"><img src="__PUBLIC__/home/images/logo.png" width="60"></a>
+	      <a class="navbar-brand" style="padding:10px" href="__APP__"><img src="__PUBLIC__/home/images/logo.png" width="60"></a>
 	      <a class="navbar-brand" style="padding-top: 18px"><img src="__PUBLIC__/home/images/character.png" width="300"></a>
 	   </div>
 	   <div class="collapse navbar-collapse" id="example-navbar-collapse">
 	      <ul class="nav navbar-nav" style="float: right; padding-top: 15px">
+	      <!-- <?php var_dump($nav_menu)  ?> -->
 	         <volist name="nav_menu" id="menu" key="key">
-	          <if condition="($key eq 0) ">
-	         <li class="active"><a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index">{$menu.cname}</a>
-	         </li>
+	         <if condition="($key eq 0) ">
+	         <li class="active">
+	         
 	         <else />
-	         <li><a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index/cid/{$menu.cid}">{$menu.cname}</a></li> 
-	        </if>
+	         <li>
+	         </if>
+
+	         <if condition="($menu.cname_en eq app) ">
+				<a class="btn btn-danger" href="#" onmouseout="$('#code').hide();" onmouseover="$('#code').show();">下载APP</a>
+				<div id="code" style="position: absolute; left:-24px; display: none;z-index:999" >
+					<img src="__PUBLIC__/home/images/code.png" width="140">
+		        </div>
+			<elseif condition="($menu.cname_en eq news) "/>	
+	         <a class="btn btn-danger" href="__APP__/{$menu.cname_en}/index/cid/{$menu.cid}">{$menu.cname}</a>
+	         <else />
+	         <a class="btn btn-danger" href="#">{$menu.cname}</a>
+	         </if>
+	         </li> 
+	        
 			</volist>
 	        <!--  <li><a class="btn btn-danger" href="#">粉丝入口</a></li>
 	         <li><a class="btn btn-danger" href="#">下载APP</a></li>
@@ -97,8 +111,8 @@
 	    <ul>
 	    <foreach name="focus_article" item="focus" key="key">
 	        <li>
-	        	<a>
-	        		<img src="__PUBLIC__/images/focus/{$focus.focus_img}" style="width: 100%">
+	        	<a href="__APP__/news/detail/cid/{$menu.cid}/aid/{$focus.aid}">
+	        		<img height="300" src="__PUBLIC__/images/focus/{$focus.focus_img}" style="width: 100%">
 	        	</a>
 	        </li>
 	    </foreach>
@@ -115,14 +129,14 @@
 		</div>
 
 		<div class="row" style="margin-top: 30px;">
-			<ul class="col-xs-12">
+			<ul class="col-xs-12">230018
 			<volist name="article_list" id="article_info">
-				<li class="col-xs-3">
+				<li class="col-xs-3" style="margin-bottom:15px">
 					<a href="__APP__/News/detail/cid/{$cid}/aid/{$article_info.aid}">
-					<img src="__PUBLIC__/images/focus/{$article_info.focus_img}" style="width: 100%; min-height: 150px">
+					<img src="__PUBLIC__/images/focus/{$article_info.focus_img}" style="width: 300px; height: 165px">
 					</a>
 					<br>
-					<span>{$article_info.title}</span>
+					<span style="font-size: 16px">{$article_info.title}</span>
 				</li>
 			</volist>	
 			</ul>

@@ -26,11 +26,11 @@
     <td>&nbsp;</td>
 </tr>
 
-<tr>
+<!-- <tr>
 	<td height="30" width="50">校验码：</td>
     <td><input type="text" id="verify_input" name="verify" size="10" maxlength="10" style="width:100px;" /></td>
     <td><img id="verifyImg" src="__APP__/Login/verify/" onclick="fleshVerify()" style="cursor:pointer" title="看不清？点击换一张！" /></td>
-</tr>
+</tr> -->
 
 <tr><td height="30" width="50">&nbsp;</td><td><input type="submit" value="登 录" /></td><td>&nbsp;</td></tr>
 

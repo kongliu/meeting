@@ -45,7 +45,7 @@ class NewsAction extends Action {
 		$this->assign('bread_crumbs', $bread_crumbs);*/
 		// 轮播图
 		$myweb_cms_article = M('cms_article');
-		$focus_article = $myweb_cms_article->field('aid,cid,title,focus_img')->where('is_pub=1 and is_focus=1')->order('sort_order asc, aid desc')->limit(0,5)->select();
+		$focus_article = $myweb_cms_article->field('aid,cid,title,focus_img,sort_order')->where('is_pub=1 and is_focus=1')->order('sort_order desc, aid desc')->limit(0,5)->select();
 		$this->assign('focus_article', $focus_article);
 
 		// 总的文章数量

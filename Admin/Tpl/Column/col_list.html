@@ -14,6 +14,7 @@
     <tr>
     	<th height="25" align="left" width="100">编号</th>
         <th align="left">栏目名称</th>
+        <th align="left">栏目英文名称</th>
         <th align="left" width="100">独立页面</th>
         <th align="left" width="100">是否导航</th>
         <th align="left" width="100">是否关闭</th>
@@ -25,6 +26,7 @@
     <tr>
     	<td height="25">{$col.cid}</td>
         <td>{$col.cname}</td>
+        <td>{$col.cname_en}</td>
         <td><if condition="$col.is_alone_page eq 1">是<else />否</if></td>
         <td><if condition="$col.is_nav eq 1">是<else />否</if></td>
         <td><if condition="$col.is_close eq 1">是<else />否</if></td>

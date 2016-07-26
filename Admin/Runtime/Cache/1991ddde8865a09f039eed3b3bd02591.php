@@ -13,6 +13,7 @@
     <?php if($column_list): ?><tr>
     	<th height="25" align="left" width="100">编号</th>
         <th align="left">栏目名称</th>
+        <th align="left">栏目英文名称</th>
         <th align="left" width="100">独立页面</th>
         <th align="left" width="100">是否导航</th>
         <th align="left" width="100">是否关闭</th>
@@ -23,6 +24,7 @@
     <?php if(is_array($column_list)): $i = 0; $__LIST__ = $column_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$col): $mod = ($i % 2 );++$i;?><tr>
     	<td height="25"><?php echo ($col["cid"]); ?></td>
         <td><?php echo ($col["cname"]); ?></td>
+        <td><?php echo ($col["cname_en"]); ?></td>
         <td><?php if($col["is_alone_page"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>
         <td><?php if($col["is_nav"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>
         <td><?php if($col["is_close"] == 1): ?>是<?php else: ?>否<?php endif; ?></td>

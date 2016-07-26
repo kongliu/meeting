@@ -14,26 +14,21 @@ class IndexAction extends Action {
 		// print_r($navigation['head_navigation']);exit;
 		// 轮播图
 		$myweb_cms_article = M('cms_article');
-		$focus_article = $myweb_cms_article->field('aid,cid,title,focus_img')->where('is_pub=1 and is_focus=1 and home_show=1')->order('sort_order asc, aid desc')->limit(0,5)->select();
-		$this->assign('focus_article', $focus_article);
-
-		// 会长发言
-		$from_president = 9;
-		$president_article = $myweb_cms_article->field('aid,title,summary,summary_en')->where('is_pub=1 and cid='.$from_president)->find();
-		$this->assign('president_article', $president_article);
+		$focus_article = $myweb_cms_article->field('aid,cid,title,focus_img,sort_order_home ')->where('is_pub=1 and home_show=1')->order('sort_order_home desc, aid desc')->limit(0,5)->select();
+		// var_dump($focus_article );exit;
 		
-		// 新闻公告
-		$news_events = 10;
-		$news_list = $myweb_cms_article->field('aid,title,add_time')->where(' is_pub=1 and home_show=1 and  is_focus=0')->order('aid desc')->limit(0,10)->select();
-		// 格式化时间
-		foreach($news_list as $key=>$value)
-		{
-			// $news_list[$key]['atime'] = date('Y-m-d',strtotime($value['atime']));
-			$news_list[$key]['add_time'] = substr($value['add_time'],0,10);
-		}
-		$this->assign('news_list', $news_list);
-		$this->assign('news_events', $news_events);
 
+		// 轮播图所属column
+		$myweb_cms_column = M('cms_column');
+		foreach ($focus_article as $key => $value) {
+			$col_info = $myweb_cms_column->where('cid = ' . $value['cid'] . ' and is_close = 0')->find();
+			if($col_info){$focus_article[$key]['cname_en'] = $col_info['cname_en']; 
+			// echo $col_info['cname_en'];
+			}
+			
+		}
+		// var_dump($focus_article );exit;
+		$this->assign('focus_article', $focus_article);
 		// 友情链接
 		$ts_friend_links = M('friend_links');
 		$links_list = $ts_friend_links->order('sort_order asc, lid asc')->limit(0,4)->select();

@@ -65,7 +65,7 @@ class ArticleAction extends MyBaseAction {
 		// 查询文章
 		$from = ($p - 1 ) * $page_size;
 		$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
-		myweb_cms_article.is_focus,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->order('aid desc')->limit($from,$page_size)->select();
+		myweb_cms_article.is_focus,myweb_cms_article.sort_order,myweb_cms_article.sort_order_home,myweb_cms_article.add_time')->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->order('aid desc')->limit($from,$page_size)->select();
 		$this->assign('article_list', $article_list);
 		/*ob_start();
 
@@ -157,8 +157,8 @@ class ArticleAction extends MyBaseAction {
 			}elseif(!empty($where_title)&&!empty($where_option)){
 				$where = $where_title.' and '.$where_option;
 			}
-			$total = $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time,sort_order')->where($where)->count();
-			$article_list= $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time,sort_order')->where($where)->limit($limit_from,$page_size)->select();
+			$total = $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time,sort_order,sort_order_home')->where($where)->count();
+			$article_list= $myweb_cms_article->field('aid,title,is_pub,home_show,is_focus,add_time,sort_order,sort_order_home')->where($where)->limit($limit_from,$page_size)->select();
 			}else{
 
 			if(!empty($title)){
@@ -209,9 +209,9 @@ class ArticleAction extends MyBaseAction {
 			
 
 // var_dump($where);exit;
-				$total = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_article.sort_order,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
+				$total = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_article.sort_order,myweb_cms_article.sort_order_home,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
 		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->count();
-				$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_article.sort_order,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
+				$article_list = $myweb_cms_article->field('myweb_cms_article.aid,myweb_cms_article.sort_order,myweb_cms_article.sort_order_home,myweb_cms_column.cname,myweb_cms_article.title,myweb_cms_article.is_pub,myweb_cms_article.home_show,
 		myweb_cms_article.is_focus,myweb_cms_article.add_time')->where($where)->join('myweb_cms_column ON myweb_cms_article.cid = myweb_cms_column.cid')->limit($limit_from,$page_size)->select();
 
 			}
@@ -292,6 +292,7 @@ class ArticleAction extends MyBaseAction {
 		$article_info['summary'] = $this->_post('summary');
 		$article_info['is_pub'] = intval($_POST['is_pub']);
 		$article_info['sort_order'] = intval($_POST['sort_order']);
+		$article_info['sort_order_home'] = intval($_POST['sort_order_home']);
 		$article_info['home_show'] = intval($_POST['home_show']);
 		$article_info['is_focus'] = intval($_POST['is_focus']);
 		$article_info['focus_img'] = '';
@@ -302,14 +303,20 @@ class ArticleAction extends MyBaseAction {
 			$article_info['atime'] = $this->_post('atime');
 		}
 
-		// 排列序号自动纠正
-		if( !empty($article_info['sort_order']) && ($article_info['home_show']||$article_info['is_focus']) )
+		// 详情排列序号自动纠正
+		if( !empty($article_info['sort_order']) && $article_info['is_focus']) 
 		{	
 
 			$article_info['sort_order'] = $this->auto_sort($article_info['sort_order']);
 			
 		}
+		//主页排序纠正
+		if( !empty($article_info['sort_order_home']) && $article_info['home_show'] )
+		{	
 
+			$article_info['sort_order_home'] = $this->auto_sort_home($article_info['sort_order_home']);
+			
+		}
 		// 焦点图上传
 		if(is_uploaded_file($_FILES['focus_img']['tmp_name']))
 		{
@@ -441,6 +448,25 @@ class ArticleAction extends MyBaseAction {
 		
 
 	}
+	private function auto_sort_home($sort){
+
+
+			$web_cms_article = M('cms_article');
+			$res = $web_cms_article->where('sort_order_home = '.$sort)->find();
+			if(!empty($res))
+			{
+				$sort = $sort + 1;
+				// echo $sort;
+				// exit;
+				return $this->auto_sort_home($sort);
+				
+			}else{
+				return $sort;
+			}
+			
+		
+
+	}
 	
 	// 文章修改
 	public function article_update()
@@ -460,6 +486,7 @@ class ArticleAction extends MyBaseAction {
 		$article_info['summary'] = $this->_post('summary');
 		$article_info['is_pub'] = intval($_POST['is_pub']);
 		$article_info['sort_order'] = intval($_POST['sort_order']);
+		$article_info['sort_order_home'] = intval($_POST['sort_order_home']);
 		$article_info['home_show'] = intval($_POST['home_show']);
 		$article_info['is_focus'] = intval($_POST['is_focus']);
 		if(!empty($_POST['focus_img'])){
@@ -499,11 +526,18 @@ class ArticleAction extends MyBaseAction {
 			exit;
 		}
 		// 排列序号自动纠正
-		if( !empty($article_info['sort_order']) && ($article_info['home_show']||$article_info['is_focus']) )
+		if( !empty($article_info['sort_order']) && $article_info['is_focus'])
 		{	
 
 			$article_info['sort_order'] = $this->auto_sort($article_info['sort_order']);
 			// var_dump($article_info['sort_order']);exit;
+			
+		}
+		//主页排序纠正
+		if( !empty($article_info['sort_order_home']) && $article_info['home_show'] )
+		{	
+
+			$article_info['sort_order_home'] = $this->auto_sort_home($article_info['sort_order_home']);
 			
 		}
 
